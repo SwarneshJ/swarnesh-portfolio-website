@@ -1,0 +1,103 @@
+.contact-section {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.contact-container {
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+    padding: 4rem !important;
+    /* Override glass-card default */
+}
+
+.contact-title {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+}
+
+.contact-subtitle {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    margin-bottom: 3.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+}
+
+.social-links-grid {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem 2.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 1.1rem;
+    font-family: var(--font-heading);
+    min-width: 220px;
+    justify-content: center;
+    transition: all var(--transition-smooth);
+}
+
+.social-icon {
+    color: var(--accent-cyan);
+    transition: transform var(--transition-fast);
+}
+
+.social-btn:hover {
+    background: rgba(62, 139, 255, 0.1);
+    border-color: rgba(62, 139, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(62, 139, 255, 0.15);
+}
+
+.social-btn:hover .social-icon {
+    transform: scale(1.1);
+}
+
+.resume-cta {
+    padding-top: 3.5rem;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.resume-cta p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        padding: 3rem 2rem !important;
+    }
+
+    .contact-title {
+        font-size: 2.5rem;
+    }
+
+    .social-btn {
+        width: 100%;
+    }
+}

@@ -1,0 +1,78 @@
+.coursework-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.course-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.course-header h3 {
+    font-size: 1.3rem;
+    color: var(--text-main);
+    margin-top: 0.5rem;
+}
+
+.course-icon {
+    color: var(--accent-blue);
+    background: rgba(62, 139, 255, 0.1);
+    padding: 1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.course-section {
+    margin-bottom: 1.5rem;
+}
+
+.course-section:last-child {
+    margin-bottom: 0;
+}
+
+.course-section h4 {
+    font-size: 0.9rem;
+    color: var(--accent-cyan);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.course-section p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.course-section.highlight {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.5rem;
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--accent-purple);
+    margin-top: auto;
+}
+
+.course-section.highlight h4 {
+    color: var(--accent-purple);
+}
+
+.block {
+    display: block;
+}
+
+.w-fit {
+    width: fit-content;
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .coursework-grid {
+        grid-template-columns: 1fr;
+    }
+}
