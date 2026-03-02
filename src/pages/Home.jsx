@@ -71,7 +71,7 @@ const Home = () => {
                             animate="show"
                         >
                             <div className="hero-image-container glass-card">
-                                <img src="/src/assets/profile.jpg" alt="Swarnesh Jha" className="hero-image" />
+                                <img src="/assets/profile.jpg" alt="Swarnesh Jha" className="hero-image" />
                             </div>
                         </motion.div>
                     </div>

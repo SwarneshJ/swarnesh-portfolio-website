@@ -41,7 +41,7 @@ const About = () => {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                         >
-                            <img src="/src/assets/profile.jpg" alt="Swarnesh Jha - Professional Portrait" className="about-image" />
+                            <img src="/assets/profile.jpg" alt="Swarnesh Jha - Professional Portrait" className="about-image" />
                         </motion.div>
 
                         {/* Narrative Content */}

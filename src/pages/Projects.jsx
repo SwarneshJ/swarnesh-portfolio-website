@@ -24,7 +24,7 @@ const projectsData = [
         metrics: ['88% F1-Score', '10x Cost Reduction vs GPT-4'],
         links: { github: '#', live: '#' },
         hasMemo: true,
-        memoSlides: Array.from({ length: 14 }, (_, i) => `/src/assets/memo/Slide${i + 1}.jpeg`)
+        memoSlides: Array.from({ length: 14 }, (_, i) => `/assets/memo/Slide${i + 1}.jpeg`)
     },
     {
         id: 'talent-dashboard',
