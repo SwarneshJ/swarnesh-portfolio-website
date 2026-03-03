@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, ArrowRight, Presentation, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ExternalLink, Github, ArrowRight, Presentation, X, ChevronLeft, ChevronRight, Video } from 'lucide-react';
 import { useState } from 'react';
 import './Projects.css';
 
@@ -24,7 +24,21 @@ const projectsData = [
         metrics: ['88% F1-Score', '10x Cost Reduction vs GPT-4'],
         links: { github: 'https://github.com/SwarneshJ/AI-Customer-Review-Classification', live: null },
         hasMemo: true,
+        memoType: 'Executive Memo',
         memoSlides: Array.from({ length: 14 }, (_, i) => `/assets/memo/Slide${i + 1}.jpeg`)
+    },
+    {
+        id: 'perfect-form',
+        flagship: true,
+        title: 'PerfectFormAI (Startup VC Pitch)',
+        tags: ['Entrepreneurship', 'React Native', 'Computer Vision'],
+        summary: 'Pitched an AI-driven fitness coaching application utilizing on-device pose estimation to analyze real-time workout form and deliver corrective audio feedback.',
+        metrics: ['VC Ideation Feedback', 'Expo Go MVP'],
+        links: { github: '#', live: null },
+        hasMemo: true,
+        memoType: 'Pitch Deck',
+        appVideo: '/assets/perfectform/app-video.mp4',
+        memoSlides: Array.from({ length: 21 }, (_, i) => `/assets/perfectform/Slide${i + 1}.jpeg`)
     },
     {
         id: 'talent-dashboard',
@@ -139,11 +153,16 @@ const Projects = () => {
                                     {project.hasMemo && (
                                         <button
                                             className="btn-icon"
-                                            style={{ background: 'var(--accent-blue)', color: 'white', order: -1 }}
+                                            style={{ background: 'var(--accent-blue)', color: 'white', order: -2 }}
                                             onClick={() => openMemo(project)}
                                         >
-                                            <Presentation size={18} /> Executive Memo
+                                            <Presentation size={18} /> {project.memoType || 'Executive Memo'}
                                         </button>
+                                    )}
+                                    {project.appVideo && (
+                                        <a href={project.appVideo} target="_blank" rel="noreferrer" className="btn-icon" style={{ background: 'rgba(255, 255, 255, 0.1)', color: 'white', order: -1 }} aria-label="Watch Demo">
+                                            <Video size={18} /> Watch Demo
+                                        </a>
                                     )}
                                     {project.links.live && (
                                         <a href={project.links.live} target="_blank" rel="noreferrer" className="btn-icon" aria-label="View Live">
@@ -181,7 +200,7 @@ const Projects = () => {
                             onClick={(e) => e.stopPropagation()} // Prevent clicks inside modal from closing it
                         >
                             <div className="modal-header">
-                                <h3>{selectedMemo.title} - Executive Memo</h3>
+                                <h3>{selectedMemo.title} - {selectedMemo.memoType || 'Executive Memo'}</h3>
                                 <button className="close-btn" onClick={closeMemo}>
                                     <X size={24} />
                                 </button>

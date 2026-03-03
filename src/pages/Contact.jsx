@@ -28,7 +28,7 @@ const Contact = () => {
 
                     <div className="social-links-grid">
                         <motion.a
-                            href="mailto:swarnesh.jha@example.com"
+                            href="mailto:swarnesh_jha@kenan-flagler.unc.edu"
                             className="social-btn"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
