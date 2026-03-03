@@ -121,7 +121,7 @@ const Home = () => {
                         transition={{ duration: 0.6 }}
                     >
                         <h2 className="section-title">What I Do</h2>
-                        <p className="section-sub">Core pillars bridging engineering with market reality.</p>
+                        <p className="section-sub">Core pillars bridging engineering with business requirements.</p>
                     </motion.div>
 
                     <div className="services-grid">
@@ -132,9 +132,9 @@ const Home = () => {
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
                         >
-                            <Brain size={40} className="card-icon" />
-                            <h3>AI Engineering</h3>
-                            <p>Designing scalable AI pipelines, from fine-tuning transformer models (RoBERTa) to orchestrating complex RAG architectures for dynamic workflow optimization.</p>
+                            <Terminal size={40} className="card-icon" />
+                            <h3>Product Strategy</h3>
+                            <p>Translating market insights into actionable roadmaps. Applying MBA-level rigor to pricing, Go-to-Market strategies, and unit economics.</p>
                         </motion.div>
 
                         <motion.div
@@ -144,9 +144,9 @@ const Home = () => {
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
                         >
-                            <Terminal size={40} className="card-icon" />
-                            <h3>Product Strategy</h3>
-                            <p>Translating market insights into actionable roadmaps. Applying MBA-level rigor to pricing, Go-to-Market strategies, and unit economics.</p>
+                            <Brain size={40} className="card-icon" />
+                            <h3>AI Engineering</h3>
+                            <p>Designing scalable AI pipelines, from fine-tuning transformer models (RoBERTa) to orchestrating complex RAG architectures for dynamic workflow optimization.</p>
                         </motion.div>
 
                         <motion.div
@@ -242,18 +242,36 @@ const Home = () => {
                         <Link to="/frameworks" className="btn btn-secondary hide-mobile">All Frameworks</Link>
                     </div>
 
-                    <div className="services-grid mt-4">
-                        <motion.div className="glass-card" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                            <h3>Minto Pyramid Principle</h3>
-                            <p>Top-down structured thinking ensuring executive communications are direct, logical, and instantly actionable. Crucial for steering high-level strategic alignment.</p>
+                    <div className="frameworks-grid mt-4">
+                        <motion.div className="framework-card glass-card" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+                            <div className="fc-header">
+                                <span className="fc-icon">🔺</span>
+                                <h3>The Minto Pyramid</h3>
+                            </div>
+                            <div className="fc-content">
+                                <p className="fc-def"><strong>Definition:</strong> A top-down structure communicating the core answer first, followed by supporting grouped arguments.</p>
+                                <p className="fc-ex"><strong>In Practice:</strong> Used to restructure a convoluted 40-slide technical cloud architecture review into a 3-page executive brief for JPMC MDs.</p>
+                            </div>
                         </motion.div>
-                        <motion.div className="glass-card" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
-                            <h3>RICE Scoring Model</h3>
-                            <p>Data-driven prioritization balancing Reach, Impact, Confidence, and Effort. Instrumental in maximizing engineering ROI when defining agile product roadmaps.</p>
+                        <motion.div className="framework-card glass-card" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
+                            <div className="fc-header">
+                                <span className="fc-icon">🧊</span>
+                                <h3>ICE Scoring (Impact, Confidence, Ease)</h3>
+                            </div>
+                            <div className="fc-content">
+                                <p className="fc-def"><strong>Definition:</strong> A rapid prioritization matrix multiplying Impact x Confidence x Ease to stack-rank product backlog items.</p>
+                                <p className="fc-ex"><strong>In Practice:</strong> Deployed alongside the Head of Product to brutally prioritize Q3 roadmap items, deferring a complex dashboard rebuild in favor of high-yield API integrations.</p>
+                            </div>
                         </motion.div>
-                        <motion.div className="glass-card" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
-                            <h3>Jobs-to-be-Done (JTBD)</h3>
-                            <p>Focusing entirely on the underlying motive rather than demographic features to uncover the true 'why' behind product adoption and drive actual innovation.</p>
+                        <motion.div className="framework-card glass-card" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
+                            <div className="fc-header">
+                                <span className="fc-icon">🎯</span>
+                                <h3>TAM / SAM / SOM</h3>
+                            </div>
+                            <div className="fc-content">
+                                <p className="fc-def"><strong>Definition:</strong> Top-down / Bottom-up methodology for correctly sizing market opportunities and setting realistic GTM targets.</p>
+                                <p className="fc-ex"><strong>In Practice:</strong> Calculated bottom-up Serviceable Obtainable Market (SOM) for an AI startup based on realistic enterprise sales capacities.</p>
+                            </div>
                         </motion.div>
                     </div>
                 </div>

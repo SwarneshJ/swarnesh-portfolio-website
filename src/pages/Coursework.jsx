@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { BookOpen, TrendingUp, Lightbulb } from 'lucide-react';
+import { BookOpen, TrendingUp, Lightbulb, Users, PieChart, Zap, Globe, DollarSign, Target } from 'lucide-react';
 import './Coursework.css';
 
 // Mock Lucide Icon until imported globally
@@ -45,6 +45,66 @@ const courses = [
         learned: 'Studied the business implications of AI/ML trade-offs (e.g., Precision vs. Recall) and algorithmic bias.',
         shift: 'Strengthened ability to bridge the gap between data science teams and executive stakeholders by translating ML metrics (F1-score, AUC) into revenue impact.',
         icon: <BookOpen size={24} />
+    },
+    {
+        id: 'mba713',
+        code: 'MBA 713',
+        title: 'Financial Accounting',
+        tag: 'Core',
+        situation: 'Analyzed 10-K statements to dissect revenue recognition and cash flow health of SaaS competitors.',
+        learned: 'Deconstructed balance sheets, income statements, and statements of cash flow to understand enterprise valuation.',
+        shift: 'Shifted perspective from optimizing cloud compute costs to understanding how capitalized software development impacts EBITDA and overall company valuation.',
+        icon: <PieChart size={24} />
+    },
+    {
+        id: 'mba710',
+        code: 'MBA 710',
+        title: 'Corporate Finance',
+        tag: 'Core',
+        situation: 'Built discounted cash flow (DCF) models to evaluate M&A targets and new product line investments.',
+        learned: 'Applied WACC, NPV, and IRR methodologies to value strategic initiatives under extreme uncertainty.',
+        shift: 'Learned to justify technical refactoring and technical debt payoff using rigorous NPV frameworks, effectively securing budget from non-technical stakeholders.',
+        icon: <DollarSign size={24} />
+    },
+    {
+        id: 'mba726',
+        code: 'MBA 726',
+        title: 'Leading & Managing',
+        tag: 'Core',
+        situation: 'Navigated simulated organizational crises and change management scenarios across global matrices.',
+        learned: 'Explored frameworks for conflict resolution, organizational design, and aligning incentives across divergent teams.',
+        shift: 'Realized that launching a product is only 20% engineering; the other 80% is orchestrating alignment between sales, marketing, legal, and engineering siloes.',
+        icon: <Users size={24} />
+    },
+    {
+        id: 'mba778',
+        code: 'MBA 778',
+        title: 'Strategic Innovation',
+        tag: 'Elective',
+        situation: 'Formulated a disruption strategy for an incumbent tech firm facing pressure from agile AI startups.',
+        learned: 'Applied Christensen\'s Innovator\'s Dilemma and Resource Allocation Processes to map disruption vulnerabilities.',
+        shift: 'Transitioned from building features customers ask for today, to anticipating orthogonal technological vectors that will render the current product obsolete tomorrow.',
+        icon: <Zap size={24} />
+    },
+    {
+        id: 'mba834',
+        code: 'MBA 834',
+        title: 'Marketing Strategy & Analytics',
+        tag: 'Core',
+        situation: 'Optimized digital marketing spend across multiple acquisition channels using customer lifetime value (CLV) constraints.',
+        learned: 'Modeled Customer Acquisition Cost (CAC) against CLV, segmented target audiences, and drove positioning.',
+        shift: 'Embedded tracking telemetry earlier in the software lifecycle, treating activation funnels and product analytics as core engineering requirements.',
+        icon: <Target size={24} />
+    },
+    {
+        id: 'mba803',
+        code: 'MBA 803',
+        title: 'Global Macroeconomics',
+        tag: 'Core',
+        situation: 'Assessed the impact of central bank interest rate hikes on venture capital funding environments and tech valuations.',
+        learned: 'Analyzed exchange rates, monetary policy, and global supply chain vulnerabilities.',
+        shift: 'Began architecting global payment systems with an awareness of macro-regulatory shifts and cross-border currency exposure.',
+        icon: <Globe size={24} />
     }
 ];
 

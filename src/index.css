@@ -178,7 +178,7 @@ ul {
 .glass-card:hover {
   border-color: var(--border-glow);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.02);
 }
 
 /* Scrollbar */
