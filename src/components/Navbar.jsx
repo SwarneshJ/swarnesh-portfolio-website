@@ -39,7 +39,7 @@ const Navbar = () => {
                     className="brand"
                     onClick={() => window.scrollTo(0, 0)}
                 >
-                    SJ<span className="accent">.</span>
+                    <img src="/assets/mylogo.png" alt="Swarnesh Jha Logo" className="nav-brand-logo" />
                 </NavLink>
 
                 {/* Desktop Nav */}
