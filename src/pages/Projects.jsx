@@ -25,6 +25,7 @@ const projectsData = [
         links: { github: 'https://github.com/SwarneshJ/AI-Customer-Review-Classification', live: null },
         hasMemo: true,
         memoType: 'Executive Memo',
+        image: '/assets/memo/Slide1.jpeg',
         memoSlides: Array.from({ length: 14 }, (_, i) => `/assets/memo/Slide${i + 1}.jpeg`)
     },
     {
@@ -37,6 +38,7 @@ const projectsData = [
         links: { github: '#', live: null },
         hasMemo: true,
         memoType: 'Pitch Deck',
+        image: '/assets/perfectform/Slide1.jpeg',
         appVideo: '/assets/perfectform/app-video.mp4',
         memoSlides: Array.from({ length: 21 }, (_, i) => `/assets/perfectform/Slide${i + 1}.jpeg`)
     },
@@ -47,16 +49,8 @@ const projectsData = [
         tags: ['React', 'Next.js', 'PostgreSQL', 'AI Agent'],
         summary: 'A real-time analytics engine with ML forecasting to identify global tech talent pools, scrape live job boards, and benchmark competitor compensation.',
         metrics: ['Real-time Streaming', 'RAG Integration'],
+        image: '/assets/talent-dashboard.png',
         links: { github: 'https://github.com/SwarneshJ/ai-talent-intelligence-dashboard', live: 'https://ai-talent-intelligence-dashboard.vercel.app/' }
-    },
-    {
-        id: 'jpmc-routing',
-        flagship: false,
-        title: 'Next-Gen Payments Migration (JPMC)',
-        tags: ['Product Management', 'AWS', 'System Architecture'],
-        summary: 'Definining requirements and go-to-market strategy for migrating a legacy global payments processing engine to AWS public cloud infrastructure.',
-        metrics: ['$1T+ Annual Volume', '15% Processing Cost Reduction'],
-        links: { github: '#', live: '#' }
     },
     {
         id: 'dmv-chatbot',
@@ -65,6 +59,7 @@ const projectsData = [
         tags: ['RAG', 'LangChain', 'OpenAI'],
         summary: 'A conversational AI interface built to help North Carolina residents quickly find vehicle registration wait times and obscure policy requirements.',
         metrics: ['Reduced Bounce Rate 40%'],
+        image: '/assets/dmv-chatbot.png',
         links: { github: 'https://github.com/SwarneshJ/myAI3', live: 'https://my-ai-3-pearl-alpha.vercel.app/' }
     }
 ];
@@ -132,48 +127,56 @@ const Projects = () => {
                             >
                                 {project.flagship && <div className="flagship-badge">Flagship Case Study</div>}
 
-                                <div className="project-tags">
-                                    {project.tags.map(tag => (
-                                        <span key={tag} className="pill outline text-xs">{tag}</span>
-                                    ))}
-                                </div>
+                                <div className="project-content-wrapper">
+                                    <div className="project-image-container">
+                                        <img src={project.image} alt={project.title} className="project-image" />
+                                    </div>
 
-                                <h3>{project.title}</h3>
-                                <p>{project.summary}</p>
-
-                                <div className="project-metrics">
-                                    {project.metrics.map(metric => (
-                                        <div key={metric} className="metric-item">
-                                            <ArrowRight size={14} className="metric-icon" /> {metric}
+                                    <div className="project-details">
+                                        <div className="project-tags">
+                                            {project.tags.map(tag => (
+                                                <span key={tag} className="pill outline text-xs">{tag}</span>
+                                            ))}
                                         </div>
-                                    ))}
-                                </div>
 
-                                <div className="project-actions" style={{ flexWrap: 'wrap' }}>
-                                    {project.hasMemo && (
-                                        <button
-                                            className="btn-icon"
-                                            style={{ background: 'var(--accent-blue)', color: 'white', order: -2 }}
-                                            onClick={() => openMemo(project)}
-                                        >
-                                            <Presentation size={18} /> {project.memoType || 'Executive Memo'}
-                                        </button>
-                                    )}
-                                    {project.appVideo && (
-                                        <a href={project.appVideo} target="_blank" rel="noreferrer" className="btn-icon" style={{ background: 'rgba(255, 255, 255, 0.1)', color: 'white', order: -1 }} aria-label="Watch Demo">
-                                            <Video size={18} /> Watch Demo
-                                        </a>
-                                    )}
-                                    {project.links.live && (
-                                        <a href={project.links.live} target="_blank" rel="noreferrer" className="btn-icon" aria-label="View Live">
-                                            <ExternalLink size={18} /> View App
-                                        </a>
-                                    )}
-                                    {project.links.github && (
-                                        <a href={project.links.github} target="_blank" rel="noreferrer" className="btn-icon" aria-label="GitHub">
-                                            <Github size={18} /> Code
-                                        </a>
-                                    )}
+                                        <h3>{project.title}</h3>
+                                        <p>{project.summary}</p>
+
+                                        <div className="project-metrics">
+                                            {project.metrics.map(metric => (
+                                                <div key={metric} className="metric-item">
+                                                    <ArrowRight size={14} className="metric-icon" /> {metric}
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        <div className="project-actions" style={{ flexWrap: 'wrap' }}>
+                                            {project.hasMemo && (
+                                                <button
+                                                    className="btn-icon"
+                                                    style={{ background: 'var(--accent-blue)', color: 'white', order: -2 }}
+                                                    onClick={() => openMemo(project)}
+                                                >
+                                                    <Presentation size={18} /> {project.memoType || 'Executive Memo'}
+                                                </button>
+                                            )}
+                                            {project.appVideo && (
+                                                <a href={project.appVideo} target="_blank" rel="noreferrer" className="btn-icon" style={{ background: 'rgba(255, 255, 255, 0.1)', color: 'white', order: -1 }} aria-label="Watch Demo">
+                                                    <Video size={18} /> Watch Demo
+                                                </a>
+                                            )}
+                                            {project.links.live && (
+                                                <a href={project.links.live} target="_blank" rel="noreferrer" className="btn-icon" aria-label="View Live">
+                                                    <ExternalLink size={18} /> View App
+                                                </a>
+                                            )}
+                                            {project.links.github && (
+                                                <a href={project.links.github} target="_blank" rel="noreferrer" className="btn-icon" aria-label="GitHub">
+                                                    <Github size={18} /> Code
+                                                </a>
+                                            )}
+                                        </div>
+                                    </div>
                                 </div>
                             </motion.div>
                         ))}
