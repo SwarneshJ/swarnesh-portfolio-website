@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowLeft, Server, CreditCard, ShieldCheck, Zap, Database, Globe, Layers } from 'lucide-react';
+import { ArrowLeft, Server, CreditCard, ShieldCheck, Zap, Database, Globe, Layers, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './Payments.css';
 
@@ -41,6 +41,16 @@ const Payments = () => {
                         <motion.p variants={fadeUp} className="section-sub mx-auto" style={{ maxWidth: '800px' }}>
                             Engineered the backbone of the JPMorgan Chase Commerce Platform, orchestrating millions of daily transactions globally through highly scalable, cloud-native microservices.
                         </motion.p>
+
+                        <motion.div
+                            variants={fadeUp}
+                            style={{ marginTop: '4rem', display: 'flex', flexDirection: 'column', alignItems: 'center', color: 'var(--text-secondary)' }}
+                            animate={{ y: [0, 10, 0] }}
+                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                        >
+                            <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '0.5rem' }}>Scroll to Explore</span>
+                            <ChevronDown size={28} style={{ color: 'var(--accent-blue)' }} />
+                        </motion.div>
                     </motion.div>
                 </div>
             </section>

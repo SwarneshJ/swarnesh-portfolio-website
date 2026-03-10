@@ -84,13 +84,16 @@ const Home = () => {
                                 {['Product Management', 'AI Strategy', 'Cloud Technology', 'FinTech Payments', 'JPMorganChase'].map((skill) => (
                                     skill === 'FinTech Payments' ? (
                                         <Link to="/payments" key={skill} className="skill-tag" style={{ cursor: 'pointer', textDecoration: 'none', background: 'rgba(62, 139, 255, 0.15)', borderColor: 'rgba(62, 139, 255, 0.4)' }}>
-                                            {skill} &nearr;
+                                            {skill} ↗
                                         </Link>
                                     ) : (
                                         <span key={skill} className="skill-tag">{skill}</span>
                                     )
                                 ))}
                             </motion.div>
+                            <motion.p variants={fadeUp} style={{ color: 'var(--accent-blue)', fontSize: '0.85rem', marginTop: '1.5rem', fontStyle: 'italic', opacity: 0.8 }}>
+                                *Click 'FinTech Payments' above to explore my core JPMC architecture experience.
+                            </motion.p>
 
                             <motion.div variants={fadeUp} className="hero-cta">
                                 <Link to="/projects" className="btn btn-primary">

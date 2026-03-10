@@ -13,12 +13,16 @@
 }
 
 .payments-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 2rem;
 }
 
 .tech-card {
+    flex: 1 1 stretch;
+    min-width: 300px;
+    max-width: 400px;
     padding: 2.5rem;
     display: flex;
     flex-direction: column;
