@@ -386,6 +386,16 @@ const Home = () => {
                 </div>
             </section>
 
+            {/* Faherty AI Proposal Link */}
+            <section className="section-padding" style={{ paddingBottom: '6rem' }}>
+                <div className="container" style={{ textAlign: 'center' }}>
+                    <h2 className="section-title">Faherty Brand</h2>
+                    <p className="section-sub" style={{ marginBottom: '2rem' }}>A proposed AI strategy and opportunity map to unlock margins.</p>
+                    <Link to="/faherty" className="btn btn-primary">
+                        View AI Opportunities <ArrowRight size={18} />
+                    </Link>
+                </div>
+            </section>
             {/* Executive Memo Modal */}
             <AnimatePresence>
                 {selectedMemo && (
