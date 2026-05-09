@@ -22,7 +22,6 @@ const Faherty: React.FC = () => {
         <div className="areas-pill-container" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1.5rem' }}>
           <span className="area-pill">Customer Experience</span>
           <span className="area-pill">Merchandising & Buying</span>
-          <span className="area-pill">Marketing & Content</span>
           <span className="area-pill">Operations & Fulfillment</span>
         </div>
       </section>
@@ -114,6 +113,21 @@ const Faherty: React.FC = () => {
               </p>
               <span className="pipeline-badge">Pure NLP Classification</span>
             </div>
+
+            <div className="use-case">
+              <div className="use-case-title">
+                <Target size={20} /> AI-Powered Stylist & Fit
+              </div>
+              <p className="use-case-desc">
+                Reduce purchase uncertainty to directly impact both conversion and returns. Build an AI-powered stylist and fit recommendation system that helps customers choose the right product, size, and outfit in real time.
+              </p>
+              <ul style={{ margin: '0.75rem 0', paddingLeft: '1.25rem', fontSize: '0.95rem', color: 'var(--text-secondary)', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+                <li>Improves conversion → revenue upside</li>
+                <li>Reduces returns → cost savings</li>
+                <li>Increases AOV through outfit bundling</li>
+              </ul>
+              <span className="pipeline-badge">Revenue & Cost Lever</span>
+            </div>
           </div>
 
           {/* Merchandising & Buying */}
@@ -129,22 +143,6 @@ const Faherty: React.FC = () => {
                 (high/medium/low confidence) when sales history is missing, acting as a cold-start forecasting model.
               </p>
               <span className="pipeline-badge">Text + Structured Features</span>
-            </div>
-          </div>
-
-          {/* Marketing & Content */}
-          <div className="opp-card">
-            <h3 className="opp-category"><Tags size={24} /> Marketing & Content</h3>
-            
-            <div className="use-case">
-              <div className="use-case-title">
-                <Target size={20} /> Review-Driven Ad Targeting
-              </div>
-              <p className="use-case-desc">
-                Extract natural language from Trustpilot/Reddit fans to categorize purchase motivation 
-                (sustainability, softness, occasion). Map these segments directly to Meta/Google ad creative.
-              </p>
-              <span className="pipeline-badge">Unstructured text → Structured labels → Action</span>
             </div>
           </div>
 
