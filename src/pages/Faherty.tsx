@@ -90,7 +90,7 @@ const Faherty: React.FC = () => {
         
         <div className="opportunities-grid">
           {/* Customer Experience */}
-          <div className="opp-card">
+          <div className="opp-card horizontal">
             <h3 className="opp-category"><UserCheck size={24} /> Customer Experience</h3>
             
             <div className="use-case">

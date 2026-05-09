@@ -245,6 +245,32 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 10px 40px rgba(30, 58, 95, 0.3);
 }
 
+.opp-card.horizontal {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 1024px) {
+  .opp-card.horizontal {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+  .opp-card.horizontal .opp-category {
+    flex: 0 0 100%;
+    margin-bottom: 0.5rem;
+  }
+  .opp-card.horizontal .use-case {
+    flex: 1 1 calc(33.333% - 1.5rem);
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+  }
+  .opp-card.horizontal .use-case .pipeline-badge {
+    margin-top: auto;
+    align-self: flex-start;
+  }
+}
+
 .opp-category {
   display: inline-flex;
   align-items: center;
