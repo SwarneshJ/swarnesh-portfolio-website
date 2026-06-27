@@ -1,5 +1,6 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import { useEffect } from 'react';
 
 // Layout
 import Navbar from './components/Navbar';
@@ -18,6 +19,12 @@ import FifaStory from './pages/FifaStory';
 
 function App() {
   const location = useLocation();
+
+  // Always start a newly-navigated page from the top, not wherever the
+  // previous page was scrolled to.
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [location.pathname]);
 
   return (
     <div className="app-wrapper" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
