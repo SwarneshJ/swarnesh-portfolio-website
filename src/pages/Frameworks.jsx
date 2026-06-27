@@ -25,7 +25,7 @@ const frameworks = [
             {
                 title: "KPI Trees",
                 definition: "Breaking down a lagging North Star Metric into actionable leading indicators.",
-                example: "Mapped 'Annual Revenue' down to 'Activation Rate' and 'Time-to-First-Transaction' to give engineering clear local optimization targets.",
+                example: "Mapped Annual Revenue down to Activation Rate and Time-to-First-Transaction to give engineering clear local optimization targets.",
                 icon: "🌳"
             }
         ]

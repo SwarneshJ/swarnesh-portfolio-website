@@ -1,0 +1,242 @@
+/* ===== FIFA Prediction Pool - Product Story ===== */
+
+.fifa-story {
+    position: relative;
+    overflow: hidden;
+}
+
+.fs-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    transition: color var(--transition-fast);
+}
+
+.fs-back:hover {
+    color: var(--accent-blue);
+}
+
+.fs-title {
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    margin: 1rem 0 1.25rem;
+    max-width: 14ch;
+}
+
+.fs-subtitle {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    max-width: 60ch;
+    line-height: 1.7;
+}
+
+.fs-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.fs-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.fs-pill {
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding: 0.35rem 0.85rem;
+    border-radius: 30px;
+    color: var(--text-muted);
+    border: 1px solid var(--border-light);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* Hero image */
+.fs-hero-img {
+    margin-top: 3.5rem;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    background: var(--bg-secondary);
+}
+
+.fs-hero-img img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* ===== Narrative ===== */
+.fs-article {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.fs-article p {
+    color: #cfcfd2;
+    font-size: 1.12rem;
+    line-height: 1.85;
+    margin-bottom: 1.4rem;
+}
+
+.fs-h {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin: 3rem 0 1.4rem;
+    line-height: 1.2;
+}
+
+.fs-h::before {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue));
+    margin-bottom: 1.1rem;
+}
+
+.fs-build-line {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.6rem !important;
+    color: var(--text-main) !important;
+    margin-top: 2rem !important;
+}
+
+/* Pull quotes */
+.fs-quote {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+    line-height: 1.4;
+    color: var(--text-main);
+    border-left: 3px solid var(--accent-blue);
+    padding: 0.4rem 0 0.4rem 1.5rem;
+    margin: 2.5rem 0;
+}
+
+.fs-quote-final {
+    border-left-color: var(--accent-cyan);
+    background: linear-gradient(90deg, rgba(0, 228, 255, 0.06), transparent);
+    padding: 1.5rem 0 1.5rem 1.5rem;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+/* ===== Fight -> Feature mapping grid ===== */
+.fs-map {
+    max-width: 1000px;
+    margin: 3rem auto 3.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+}
+
+.fs-map-card {
+    padding: 1.6rem !important;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.fs-map-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-cyan);
+    background: rgba(62, 139, 255, 0.12);
+    margin-bottom: 0.4rem;
+}
+
+.fs-map-fight {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    line-height: 1.5;
+    font-style: italic;
+}
+
+.fs-map-arrow {
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-blue);
+}
+
+.fs-map-feature {
+    color: var(--text-main);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.55;
+}
+
+/* ===== Lessons ===== */
+.fs-lessons {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 2rem 0 2.5rem;
+}
+
+.fs-lesson {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+}
+
+.fs-lesson-num {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.6rem;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--accent-blue);
+    flex-shrink: 0;
+    padding-top: 0.2rem;
+}
+
+.fs-lesson h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.fs-lesson p {
+    margin-bottom: 0 !important;
+    font-size: 1.05rem !important;
+}
+
+/* ===== Bottom CTA ===== */
+.fs-bottom-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 4rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 860px) {
+    .fs-map {
+        grid-template-columns: 1fr;
+        max-width: 720px;
+    }
+}
+
+@media (max-width: 600px) {
+    .fs-article p {
+        font-size: 1.05rem;
+    }
+}

@@ -14,6 +14,7 @@ import Frameworks from './pages/Frameworks';
 import Contact from './pages/Contact';
 import Payments from './pages/Payments';
 import Faherty from './pages/Faherty';
+import FifaStory from './pages/FifaStory';
 
 function App() {
   const location = useLocation();
@@ -33,6 +34,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/payments" element={<Payments />} />
             <Route path="/faherty" element={<Faherty />} />
+            <Route path="/fifa-prediction-pool" element={<FifaStory />} />
           </Routes>
         </AnimatePresence>
       </main>

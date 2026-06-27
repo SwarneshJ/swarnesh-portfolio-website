@@ -56,11 +56,11 @@ const About = () => {
                                 My journey started in software engineering, focusing on the intricate mechanics of building digital products. Over the years, I realized that writing code is only a fraction of the equation. True product impact happens at the intersection of technology, business strategy, and human behavior.
                             </p>
                             <p>
-                                Before business school, I spent 5 years scaling platforms—3 at J.P. Morgan and 2 at Q3 Technologies. I architected cloud-native AWS systems processing billions of annual transactions and deployed machine learning frameworks that meaningfully optimized global payment routes. This period ingrained in me a deep appreciation for scale, resilience, and operational excellence.
+                                Before business school, I spent 5 years scaling platforms, 3 at J.P. Morgan and 2 at Q3 Technologies. I architected cloud-native AWS systems processing billions of annual transactions and deployed machine learning frameworks that meaningfully optimized global payment routes. This period ingrained in me a deep appreciation for scale, resilience, and operational excellence.
                             </p>
 
                             <div className="highlight-quote">
-                                "Along the way, I realized the problems I loved most weren't how do we build this but what should we build, and why?"
+                                Along the way, I realized the problems I loved most weren't how do we build this but what should we build, and why?
                             </div>
 
                             <p>
@@ -68,7 +68,7 @@ const About = () => {
                             </p>
 
                             <p>
-                                I bring a unique blend of <strong>quant rigor</strong>—grounded in my Mathematics background—and <strong>customer-centricity</strong>. Whether I'm evaluating AI model performance via F1 metrics or interviewing users, my methodology remains the same: ground decisions in data, but deliver for the human on the other side of the screen.
+                                I bring a unique blend of <strong>quant rigor</strong>, grounded in my Mathematics background, and <strong>customer-centricity</strong>. Whether I'm evaluating AI model performance via F1 metrics or interviewing users, my methodology remains the same: ground decisions in data, but deliver for the human on the other side of the screen.
                             </p>
                         </motion.div>
                     </div>
