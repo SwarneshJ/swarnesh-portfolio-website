@@ -11,9 +11,10 @@
 
 .navbar.scrolled {
     background: var(--bg-glass);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(16px) saturate(1.6);
+    -webkit-backdrop-filter: blur(16px) saturate(1.6);
     border-bottom: 1px solid var(--border-light);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
     padding: 1rem 0;
 }
 
@@ -32,6 +33,12 @@
     height: 40px;
     width: auto;
     object-fit: contain;
+    transition: transform var(--transition-smooth), filter var(--transition-smooth);
+}
+
+.brand:hover .nav-brand-logo {
+    transform: scale(1.08) rotate(-3deg);
+    filter: drop-shadow(0 0 10px rgba(0, 228, 255, 0.5));
 }
 
 .desktop-nav {
@@ -44,11 +51,14 @@
     font-size: 0.95rem;
     font-weight: 500;
     color: var(--text-muted);
-    padding: 0.5rem 0;
+    padding: 0.5rem 0.9rem;
+    border-radius: 20px;
+    transition: color var(--transition-fast), background var(--transition-fast);
 }
 
 .nav-link:hover {
     color: var(--text-main);
+    background: rgba(255, 255, 255, 0.06);
 }
 
 .nav-link.active {

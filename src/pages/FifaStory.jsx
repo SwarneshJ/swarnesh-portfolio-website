@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, ExternalLink, Github, Lock, EyeOff, LifeBuoy, Globe, Calculator, History } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
+import Magnetic from '../components/Magnetic';
 import './FifaStory.css';
 
 const fadeUp = {
@@ -50,12 +51,16 @@ const FifaStory = () => {
                         </p>
 
                         <div className="fs-cta">
-                            <a href="https://fifa-world-cup-prediction-pool.vercel.app/demo" target="_blank" rel="noreferrer" className="btn btn-primary">
-                                <ExternalLink size={18} /> View Live Demo
-                            </a>
-                            <a href="https://github.com/SwarneshJ/fifa-world-cup-prediction-pool" target="_blank" rel="noreferrer" className="btn btn-secondary">
-                                <Github size={18} /> View Code
-                            </a>
+                            <Magnetic>
+                                <a href="https://fifa-world-cup-prediction-pool.vercel.app/demo" target="_blank" rel="noreferrer" className="btn btn-primary">
+                                    <ExternalLink size={18} /> View Live Demo
+                                </a>
+                            </Magnetic>
+                            <Magnetic>
+                                <a href="https://github.com/SwarneshJ/fifa-world-cup-prediction-pool" target="_blank" rel="noreferrer" className="btn btn-secondary">
+                                    <Github size={18} /> View Code
+                                </a>
+                            </Magnetic>
                         </div>
 
                         <div className="fs-stack">
@@ -236,12 +241,16 @@ const FifaStory = () => {
                     </article>
 
                     <div className="fs-bottom-cta">
-                        <a href="https://fifa-world-cup-prediction-pool.vercel.app/demo" target="_blank" rel="noreferrer" className="btn btn-primary">
-                            <ExternalLink size={18} /> Try the Live Demo
-                        </a>
-                        <Link to="/projects" className="btn btn-secondary">
-                            <ArrowLeft size={18} /> All Projects
-                        </Link>
+                        <Magnetic>
+                            <a href="https://fifa-world-cup-prediction-pool.vercel.app/demo" target="_blank" rel="noreferrer" className="btn btn-primary">
+                                <ExternalLink size={18} /> Try the Live Demo
+                            </a>
+                        </Magnetic>
+                        <Magnetic>
+                            <Link to="/projects" className="btn btn-secondary">
+                                <ArrowLeft size={18} /> All Projects
+                            </Link>
+                        </Magnetic>
                     </div>
                 </div>
             </section>
