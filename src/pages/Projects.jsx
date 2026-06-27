@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, ArrowRight, Presentation, X, ChevronLeft, ChevronRight, Video, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { stopScroll, startScroll } from '../smoothScroll';
 import './Projects.css';
 
 const fadeUp = {
@@ -74,11 +75,13 @@ const Projects = () => {
         setSelectedMemo(project);
         setCurrentSlide(0);
         document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        stopScroll();
     };
 
     const closeMemo = () => {
         setSelectedMemo(null);
         document.body.style.overflow = 'auto';
+        startScroll();
     };
 
     const nextSlide = () => {

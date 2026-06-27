@@ -1,7 +1,9 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Download, Terminal, Brain, Cloud, Briefcase, GraduationCap, ExternalLink, Github, Presentation, X, ChevronLeft, ChevronRight, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { stopScroll, startScroll } from '../smoothScroll';
+import Magnetic from '../components/Magnetic';
 import './Projects.css';
 import './Home.css';
 
@@ -29,15 +31,27 @@ const Home = () => {
     const [selectedMemo, setSelectedMemo] = useState(null);
     const [currentSlide, setCurrentSlide] = useState(0);
 
+    // Subtle scroll-driven parallax across the hero.
+    const heroRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: heroRef,
+        offset: ['start start', 'end start']
+    });
+    const contentY = useTransform(scrollYProgress, [0, 1], [0, 60]);
+    const imageY = useTransform(scrollYProgress, [0, 1], [0, 120]);
+    const heroFade = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
+
     const openMemo = (project) => {
         setSelectedMemo(project);
         setCurrentSlide(0);
         document.body.style.overflow = 'hidden';
+        stopScroll();
     };
 
     const closeMemo = () => {
         setSelectedMemo(null);
         document.body.style.overflow = 'auto';
+        startScroll();
     };
 
     const nextSlide = () => {
@@ -62,14 +76,15 @@ const Home = () => {
             <div className="bg-glow" style={{ top: '-20%', left: '-10%' }} />
 
             {/* 1. Who I Am (Hero Identity) */}
-            <section className="hero-section">
+            <section className="hero-section" ref={heroRef}>
                 <div className="container">
-                    <div className="hero-flex">
+                    <motion.div className="hero-flex" style={{ opacity: heroFade }}>
                         <motion.div
                             className="hero-content"
                             variants={staggerContainer}
                             initial="hidden"
                             animate="show"
+                            style={{ y: contentY }}
                         >
                             <motion.div variants={fadeUp} className="badge">
                                 Software Engineer &rarr; Product Leader
@@ -96,27 +111,34 @@ const Home = () => {
                             </motion.p>
 
                             <motion.div variants={fadeUp} className="hero-cta">
-                                <Link to="/projects" className="btn btn-primary">
-                                    View Projects <ArrowRight size={18} />
-                                </Link>
-                                <Link to="/about" className="btn btn-secondary">
-                                    My Full Story
-                                </Link>
-                                <a href="https://drive.google.com/file/d/19LxM7ifJ3aZU2mFYOLjswtsuBRFqUSw-/view?usp=sharing" target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ border: 'none', background: 'transparent' }}>
-                                    <Download size={18} /> Resume
-                                </a>
+                                <Magnetic>
+                                    <Link to="/projects" className="btn btn-primary">
+                                        View Projects <ArrowRight size={18} />
+                                    </Link>
+                                </Magnetic>
+                                <Magnetic>
+                                    <Link to="/about" className="btn btn-secondary">
+                                        My Full Story
+                                    </Link>
+                                </Magnetic>
+                                <Magnetic>
+                                    <a href="https://drive.google.com/file/d/19LxM7ifJ3aZU2mFYOLjswtsuBRFqUSw-/view?usp=sharing" target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ border: 'none', background: 'transparent' }}>
+                                        <Download size={18} /> Resume
+                                    </a>
+                                </Magnetic>
                             </motion.div>
                         </motion.div>
 
                         <motion.div
                             className="hero-image-wrapper"
-                            variants={fadeUp}
-                            initial="hidden"
-                            animate="show"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            style={{ y: imageY }}
                         >
                             <img src="/assets/profile.png" alt="Swarnesh Jha" className="hero-image-full" />
                         </motion.div>
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 

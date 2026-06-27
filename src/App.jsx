@@ -1,10 +1,15 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { useEffect } from 'react';
+import Lenis from 'lenis';
 
 // Layout
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import Atmosphere from './components/Atmosphere';
+import ScrollProgress from './components/ScrollProgress';
+import CardSpotlight from './components/CardSpotlight';
+import { setLenis, scrollToTop } from './smoothScroll';
 
 // Pages
 import Home from './pages/Home';
@@ -20,14 +25,42 @@ import FifaStory from './pages/FifaStory';
 function App() {
   const location = useLocation();
 
+  // Momentum-based smooth scrolling (skipped for reduced-motion users).
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const lenis = new Lenis({
+      duration: 1.1,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true
+    });
+    setLenis(lenis);
+
+    let rafId;
+    const raf = (time) => {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    };
+    rafId = requestAnimationFrame(raf);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+      setLenis(null);
+    };
+  }, []);
+
   // Always start a newly-navigated page from the top, not wherever the
   // previous page was scrolled to.
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    scrollToTop();
   }, [location.pathname]);
 
   return (
     <div className="app-wrapper" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <Atmosphere />
+      <ScrollProgress />
+      <CardSpotlight />
       <Navbar />
 
       <main style={{ flex: 1 }}>
