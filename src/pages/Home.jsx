@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Download, Terminal, Brain, Cloud, Briefcase, GraduationCap, ExternalLink, Github, Presentation, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, Download, Terminal, Brain, Cloud, Briefcase, GraduationCap, ExternalLink, Github, Presentation, X, ChevronLeft, ChevronRight, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import './Projects.css';
@@ -92,7 +92,7 @@ const Home = () => {
                                 ))}
                             </motion.div>
                             <motion.p variants={fadeUp} style={{ color: 'var(--accent-blue)', fontSize: '0.85rem', marginTop: '1.5rem', fontStyle: 'italic', opacity: 0.8 }}>
-                                *Click 'FinTech Payments' above to explore my core JPMC architecture experience.
+                                *Click FinTech Payments above to explore my core JPMC architecture experience.
                             </motion.p>
 
                             <motion.div variants={fadeUp} className="hero-cta">
@@ -220,6 +220,15 @@ const Home = () => {
                                         </div>
 
                                         <div className="project-actions" style={{ flexWrap: 'wrap' }}>
+                                            {project.caseStudy && (
+                                                <Link
+                                                    to={project.caseStudy}
+                                                    className="btn-icon"
+                                                    style={{ background: 'var(--accent-purple)', color: 'white', order: -2 }}
+                                                >
+                                                    <BookOpen size={18} /> Read the Story
+                                                </Link>
+                                            )}
                                             {project.hasMemo && (
                                                 <button
                                                     className="btn-icon"
@@ -386,16 +395,6 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Faherty AI Proposal Link */}
-            <section className="section-padding" style={{ paddingBottom: '6rem' }}>
-                <div className="container" style={{ textAlign: 'center' }}>
-                    <h2 className="section-title">Faherty Brand</h2>
-                    <p className="section-sub" style={{ marginBottom: '2rem' }}>A proposed AI strategy and opportunity map to unlock margins.</p>
-                    <Link to="/faherty" className="btn btn-primary">
-                        View AI Opportunities <ArrowRight size={18} />
-                    </Link>
-                </div>
-            </section>
             {/* Executive Memo Modal */}
             <AnimatePresence>
                 {selectedMemo && (
@@ -463,6 +462,24 @@ const Home = () => {
 export default Home;
 
 const experienceData = [
+    {
+        type: 'work',
+        company: 'Faherty Brand',
+        logo: '/assets/faherty.png',
+        group: 'AI Strategy | Merchandising & Planning Analytics',
+        duration: '3 Months',
+        roles: [
+            {
+                title: 'MBA AI Strategy Intern',
+                date: 'Jun 2026 - Aug 2026',
+                location: 'New York, NY',
+                bullets: [
+                    'Designed and shipped an agentic workflow that turned fragmented seasonal data into structured hindsight reports for the merchandising and planning teams, surfacing sell-through patterns, return signals, and weeks-on-hand recommendations to inform next-season allocation strategy.',
+                    'Designed and deployed an AI signal aggregator that closed a three-year-old gap in cross-channel customer feedback synthesis, classifying complaints at the SKU level across five fragmented data sources and feeding actionable insights into the product team’s weekly review cycle.'
+                ]
+            }
+        ]
+    },
     {
         type: 'work',
         company: 'JPMorgan Chase & Co.',
@@ -557,14 +574,15 @@ const homeProjectsData = [
         memoSlides: Array.from({ length: 14 }, (_, i) => `/assets/memo/Slide${i + 1}.jpeg`)
     },
     {
-        id: 'talent-dashboard',
+        id: 'fifa-prediction-pool',
         flagship: false,
-        title: 'AI Talent Intelligence Dashboard',
-        tags: ['React', 'Next.js', 'PostgreSQL', 'AI Agent'],
-        summary: 'A real-time analytics engine with ML forecasting to identify global tech talent pools, scrape live job boards, and benchmark competitor compensation.',
-        metrics: ['Real-time Streaming', 'RAG Integration'],
-        links: { github: 'https://github.com/SwarneshJ/ai-talent-intelligence-dashboard', live: 'https://ai-talent-intelligence-dashboard.vercel.app/' },
+        title: 'FIFA World Cup 2026 Prediction Pool',
+        tags: ['Next.js', 'TypeScript', 'PostgreSQL', 'Auth.js'],
+        summary: 'Six friends ran a World Cup prediction game by hand in a WhatsApp group, so I turned every recurring argument (vote-changing, copying, manual scoring) into features and shipped a full web app with locked votes, hidden picks, a one-time lifeline, and auto-scoring. Then they voted it back off in favor of the original polls: my favorite lesson in why better isn\'t the same as winning.',
+        metrics: ['6-Player Pool · 104 Matches', 'Better ≠ Winning'],
+        links: { github: 'https://github.com/SwarneshJ/fifa-world-cup-prediction-pool', live: 'https://fifa-world-cup-prediction-pool.vercel.app/demo' },
         hasMemo: false,
-        image: '/assets/talent-dashboard.png'
+        caseStudy: '/fifa-prediction-pool',
+        image: '/assets/fifa-prediction-pool.png'
     }
 ];

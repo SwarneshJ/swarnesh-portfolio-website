@@ -33,7 +33,7 @@ const courses = [
         tag: 'Core',
         situation: 'Dissected competitive moats (e.g., Apple\'s ecosystem, Netflix\'s content scale).',
         learned: 'Utilized Porter\'s Five Forces and the VRIN framework to evaluate sustainable competitive advantages in tech markets.',
-        shift: 'Transitioned from asking "Can we build this?" to "How does building this defend our market position against new entrants?"',
+        shift: 'Transitioned from asking whether we can build this, to how building it defends our market position against new entrants.',
         icon: <Lightbulb size={24} />
     },
     {
@@ -128,7 +128,7 @@ const Coursework = () => {
                         <span className="badge">Academic Rigor</span>
                         <h1 className="section-title">UNC Kenan-Flagler Coursework</h1>
                         <p className="section-sub" style={{ maxWidth: '700px', margin: '0 auto' }}>
-                            Transforming academic frameworks into actionable product logic. Each course treated as a distinct "mini-case".
+                            Transforming academic frameworks into actionable product logic. Each course treated as a distinct mini-case.
                         </p>
                     </motion.div>
 

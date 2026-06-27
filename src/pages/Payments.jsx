@@ -117,7 +117,7 @@ const Payments = () => {
                                         My exposure to the latency and fees embedded in traditional T+2 clearing and settlement networks has driven my deep interest in Stablecoins and blockchain finality.
                                     </p>
                                     <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: '1.7' }}>
-                                        By replacing batch-processed correspondent banking with tokenized, programmable ledgers (like USDC), we can achieve instant, cross-border settlement at a fraction of the cost—fundamentally redefining global B2B money movement and unit economics.
+                                        By replacing batch-processed correspondent banking with tokenized, programmable ledgers (like USDC), we can achieve instant, cross-border settlement at a fraction of the cost, fundamentally redefining global B2B money movement and unit economics.
                                     </p>
                                 </div>
                                 <div className="stablecoin-visual hide-mobile">
