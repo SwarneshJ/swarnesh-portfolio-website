@@ -75,8 +75,8 @@
 
 .stablecoin-banner {
     padding: 4rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: linear-gradient(145deg, rgba(20, 20, 20, 0.8) 0%, rgba(30, 30, 30, 0.4) 100%);
+    border: 1px solid var(--border-light);
+    background: linear-gradient(145deg, var(--bg-secondary) 0%, var(--fill-softer) 100%);
 }
 
 .stablecoin-visual {
@@ -92,8 +92,8 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--fill-soft);
+    border: 1px solid var(--border-light);
     display: flex;
     align-items: center;
     justify-content: center;

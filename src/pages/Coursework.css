@@ -48,7 +48,7 @@
 }
 
 .course-section.highlight {
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--fill-softer);
     padding: 1.5rem;
     border-radius: var(--radius-sm);
     border-left: 3px solid var(--accent-purple);

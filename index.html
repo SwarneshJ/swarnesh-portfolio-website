@@ -6,6 +6,11 @@
   <link rel="icon" type="image/png" href="/assets/mylogo.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Swarnesh Jha | Portfolio</title>
+  <script>
+    document.documentElement.dataset.theme =
+      localStorage.getItem('theme') ||
+      (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  </script>
 </head>
 
 <body>

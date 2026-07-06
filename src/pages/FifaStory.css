@@ -56,7 +56,7 @@
     border-radius: 30px;
     color: var(--text-muted);
     border: 1px solid var(--border-light);
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--fill-softer);
 }
 
 /* Hero image */
@@ -82,7 +82,7 @@
 }
 
 .fs-article p {
-    color: #cfcfd2;
+    color: var(--text-body);
     font-size: 1.12rem;
     line-height: 1.85;
     margin-bottom: 1.4rem;
@@ -225,6 +225,10 @@
     justify-content: center;
     gap: 1rem;
     margin-top: 4rem;
+}
+
+:root[data-theme='light'] .fs-hero-img {
+    box-shadow: 0 24px 60px rgba(20, 30, 50, 0.18);
 }
 
 /* ===== Responsive ===== */
