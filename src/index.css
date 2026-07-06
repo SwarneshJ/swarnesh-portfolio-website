@@ -56,9 +56,9 @@
 
 /* ===== Light theme ===== */
 :root[data-theme='light'] {
-  --bg-primary: #F6F6F3;
+  --bg-primary: #F7F7F8;
   --bg-secondary: #FFFFFF;
-  --bg-glass: rgba(255, 255, 255, 0.75);
+  --bg-glass: rgba(255, 255, 255, 0.8);
 
   --accent-blue: #2160D3;
   --accent-cyan: #0E7C9D;
@@ -75,20 +75,23 @@
   --fill-soft: rgba(15, 20, 30, 0.05);
   --fill-softer: rgba(15, 20, 30, 0.035);
   --fill-soft-hover: rgba(15, 20, 30, 0.09);
-  --card-glass: rgba(255, 255, 255, 0.72);
-  --card-sheen: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
-  --shadow-card-hover: 0 20px 45px rgba(20, 30, 50, 0.14);
-  --spot-strength: 0.1;
+  --card-glass: #FFFFFF;
+  --card-sheen: none;
+  --shadow-card-hover: 0 24px 48px -16px rgba(16, 24, 40, 0.18);
+  --spot-strength: 0.08;
 
   color-scheme: light;
 }
 
-:root[data-theme='light'] .aurora-blob {
-  opacity: 0.26;
+/* Light mode is crisp and flat: no aurora smudges, no grain, no glow blobs.
+   Cards get definition from solid white surfaces and real shadows instead. */
+:root[data-theme='light'] .atmosphere,
+:root[data-theme='light'] .bg-glow {
+  display: none;
 }
 
-:root[data-theme='light'] .atmosphere::after {
-  opacity: 0.03;
+:root[data-theme='light'] .glass-card {
+  box-shadow: 0 1px 3px rgba(16, 24, 40, 0.05), 0 12px 32px -14px rgba(16, 24, 40, 0.12);
 }
 
 /* Reset & Base Setup */
@@ -291,6 +294,29 @@ ul {
 
 .section-padding {
   padding: 8rem 0;
+}
+
+/* Centered section headings with a coral underline (previously leaked in from
+   Faherty.css; kept deliberately as part of the site's identity). */
+.container .section-title {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.container .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: #C98A6C;
+  border-radius: 2px;
 }
 
 /* Buttons */

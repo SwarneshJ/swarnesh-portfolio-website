@@ -237,6 +237,10 @@
     animation: hero-float 6s ease-in-out infinite;
 }
 
+:root[data-theme='light'] .hero-image-full {
+    box-shadow: 0 25px 60px -18px rgba(16, 24, 40, 0.25);
+}
+
 @keyframes hero-float {
 
     0%,

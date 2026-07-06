@@ -606,5 +606,16 @@ const homeProjectsData = [
         hasMemo: false,
         caseStudy: '/fifa-prediction-pool',
         image: '/assets/fifa-prediction-pool.png'
+    },
+    {
+        id: 'dmv-chatbot',
+        flagship: false,
+        title: 'NC DMV AI Chatbot',
+        tags: ['RAG', 'LangChain', 'OpenAI'],
+        summary: 'A conversational AI interface built to help North Carolina residents quickly find vehicle registration wait times and obscure policy requirements.',
+        metrics: ['Reduced Bounce Rate 40%'],
+        links: { github: 'https://github.com/SwarneshJ/myAI3', live: 'https://my-ai-3-pearl-alpha.vercel.app/' },
+        hasMemo: false,
+        image: '/assets/dmv-chatbot.png'
     }
 ];

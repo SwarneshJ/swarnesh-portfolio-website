@@ -65,7 +65,7 @@
     overflow: hidden;
     border: 1px solid var(--border-light);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    background: #111111;
+    background: var(--bg-primary);
     aspect-ratio: 16 / 9;
     display: flex;
     align-items: center;
