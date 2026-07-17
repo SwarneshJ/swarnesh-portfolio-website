@@ -44,7 +44,7 @@ const Navbar = () => {
 
                 {/* Desktop Nav */}
                 <div className="desktop-nav">
-                    {navItems.map((item) => (
+                    {navItems.filter((item) => item.path !== '/contact').map((item) => (
                         <NavLink
                             key={item.path}
                             to={item.path}
@@ -61,6 +61,8 @@ const Navbar = () => {
                         </NavLink>
                     ))}
                 </div>
+
+                <NavLink to="/contact" className="nav-cta">Say hi</NavLink>
 
                 {/* Mobile Toggle */}
                 <button

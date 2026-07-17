@@ -305,7 +305,7 @@ const SceneStrip = () => (
     </svg>
 );
 
-const Walker = () => (
+export const Walker = () => (
     <svg viewBox="0 0 150 212" preserveAspectRatio="xMidYMax meet">
         {/* soft contact shadow */}
         <ellipse className="w-shadow" cx="76" cy="206" rx="34" ry="5" />

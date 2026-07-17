@@ -75,6 +75,24 @@
     border-radius: 2px;
 }
 
+.nav-cta {
+    padding: 0.5rem 1.25rem;
+    border: 1px solid rgba(42, 49, 60, 0.35);
+    border-radius: 30px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    transition: all var(--transition-fast);
+}
+
+.nav-cta:hover,
+.nav-cta.active {
+    background: var(--text-main);
+    color: #FCFAF4;
+    transform: translateY(-1px);
+}
+
 .mobile-toggle {
     display: none;
     background: none;
@@ -112,6 +130,10 @@
 
 @media (max-width: 768px) {
     .desktop-nav {
+        display: none;
+    }
+
+    .nav-cta {
         display: none;
     }
 

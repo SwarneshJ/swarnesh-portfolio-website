@@ -1,5 +1,5 @@
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Download, Terminal, Brain, Cloud, Briefcase, GraduationCap, ExternalLink, Github, Presentation, X, ChevronLeft, ChevronRight, BookOpen } from 'lucide-react';
+import { ArrowRight, Download, Briefcase, GraduationCap, ExternalLink, Github, Presentation, X, ChevronLeft, ChevronRight, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState, useRef } from 'react';
 import { stopScroll, startScroll } from '../smoothScroll';
@@ -171,8 +171,8 @@ const Home = () => {
                 <div className="ticker-track">
                     {[0, 1].map((copy) => (
                         <div className="ticker-item" key={copy}>
-                            {['Product Strategy', 'AI Systems', 'Global Payments', 'Cloud Architecture', 'FinTech', 'Storytelling', 'Go-To-Market', 'Data & Analytics'].map((skill) => (
-                                <span key={skill}>{skill}&nbsp;&nbsp;<span className="tick-star">✦</span></span>
+                            {['Product Strategy', 'AI Systems', 'Global Payments', 'Cloud Architecture', 'FinTech', 'Storytelling', 'Go-To-Market', 'Data & Analytics'].map((skill, i) => (
+                                <span key={skill} className={i % 2 ? 'tick-alt' : ''}>{skill}&nbsp;&nbsp;<span className="tick-star">✦</span></span>
                             ))}
                         </div>
                     ))}
@@ -203,9 +203,23 @@ const Home = () => {
                                 {project.flagship && <div className="flagship-badge">Flagship Case Study</div>}
 
                                 <div className="project-content-wrapper">
-                                    <div className="project-image-container">
-                                        <img src={project.image} alt={project.title} className="project-image" />
-                                    </div>
+                                    <motion.div
+                                        className="project-image-container"
+                                        initial={{ clipPath: 'inset(0 0 100% 0)' }}
+                                        whileInView={{ clipPath: 'inset(0 0 0% 0)' }}
+                                        viewport={{ once: true, margin: '-80px' }}
+                                        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                                    >
+                                        <motion.img
+                                            src={project.image}
+                                            alt={project.title}
+                                            className="project-image"
+                                            initial={{ scale: 1.18 }}
+                                            whileInView={{ scale: 1 }}
+                                            viewport={{ once: true, margin: '-80px' }}
+                                            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                                        />
+                                    </motion.div>
 
                                     <div className="project-details">
                                         <div className="project-tags">
@@ -368,42 +382,26 @@ const Home = () => {
                         <p className="section-sub">Core pillars bridging engineering with business requirements.</p>
                     </motion.div>
 
-                    <div className="services-grid">
-                        <motion.div
-                            className="glass-card"
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.1 }}
-                        >
-                            <Terminal size={40} className="card-icon" />
-                            <h3>Product Strategy</h3>
-                            <p>Translating market insights into actionable roadmaps. Applying MBA-level rigor to pricing, Go-to-Market strategies, and unit economics.</p>
-                        </motion.div>
-
-                        <motion.div
-                            className="glass-card"
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                        >
-                            <Brain size={40} className="card-icon" />
-                            <h3>AI Engineering</h3>
-                            <p>Designing scalable AI pipelines, from fine-tuning transformer models (RoBERTa) to orchestrating complex RAG architectures for dynamic workflow optimization.</p>
-                        </motion.div>
-
-                        <motion.div
-                            className="glass-card"
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.3 }}
-                        >
-                            <Cloud size={40} className="card-icon" />
-                            <h3>Cloud Architecture</h3>
-                            <p>Architecting robust, cloud-native AWS platforms capable of scaling to process billions of events globally, ensuring extreme high availability.</p>
-                        </motion.div>
+                    <div className="craft-list">
+                        {[
+                            { n: '01', title: 'Product Strategy', desc: 'Translating market insights into actionable roadmaps. Applying MBA-level rigor to pricing, Go-to-Market strategies, and unit economics.' },
+                            { n: '02', title: 'AI Engineering', desc: 'Designing scalable AI pipelines, from fine-tuning transformer models (RoBERTa) to orchestrating complex RAG architectures for dynamic workflow optimization.' },
+                            { n: '03', title: 'Cloud Architecture', desc: 'Architecting robust, cloud-native AWS platforms capable of scaling to process billions of events globally, ensuring extreme high availability.' }
+                        ].map((craft, i) => (
+                            <motion.div
+                                className="craft-row"
+                                key={craft.n}
+                                initial={{ opacity: 0, y: 26 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-60px' }}
+                                transition={{ duration: 0.55, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                            >
+                                <span className="craft-num">{craft.n}</span>
+                                <h3>{craft.title}</h3>
+                                <p>{craft.desc}</p>
+                                <ArrowRight size={22} className="craft-arrow" />
+                            </motion.div>
+                        ))}
                     </div>
                 </div>
             </section>

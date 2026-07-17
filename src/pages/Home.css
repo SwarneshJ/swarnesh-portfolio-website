@@ -59,7 +59,8 @@
 }
 
 .hero-title {
-    font-size: 4.2rem;
+    font-size: var(--fs-display);
+    line-height: 1.06;
     margin-bottom: 1.5rem;
 }
 
@@ -116,7 +117,7 @@
 
 /* Base Sections */
 .section-title {
-    font-size: 2.5rem;
+    font-size: var(--fs-title);
     margin-bottom: 0.5rem;
 }
 
@@ -203,10 +204,6 @@
 }
 
 @media (max-width: 768px) {
-    .hero-title {
-        font-size: 3rem;
-    }
-
     .hide-mobile {
         display: none;
     }
@@ -235,15 +232,38 @@
     animation: hero-float 6s ease-in-out infinite;
 }
 
+/* Arched portrait — echoes the journey's Gateway arch and Old Well dome */
 .hero-image-full {
     width: 100%;
-    max-width: 450px;
+    max-width: 430px;
     height: auto;
     object-fit: contain;
-    border-radius: var(--radius-lg);
+    border-radius: 240px 240px 26px 26px;
     box-shadow: 0 25px 60px -18px rgba(58, 48, 30, 0.28);
     border: 1px solid var(--border-light);
     animation: hero-float 6s ease-in-out infinite;
+}
+
+.hero-image-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: -14px;
+    border: 2.5px solid rgba(201, 138, 61, 0.65);
+    border-radius: 270px 270px 34px 34px;
+    transform: rotate(2.4deg);
+    pointer-events: none;
+}
+
+@media (max-width: 900px) {
+    .hero-image-full {
+        border-radius: 170px 170px 20px 20px;
+        max-width: 340px;
+    }
+
+    .hero-image-wrapper::after {
+        border-radius: 190px 190px 26px 26px;
+        inset: -10px;
+    }
 }
 
 @keyframes hero-float {
@@ -275,6 +295,75 @@
 
     .hero-cta {
         justify-content: center;
+    }
+}
+
+/* What I Do — editorial numbered rows instead of cards */
+.craft-list {
+    border-top: 1px solid var(--border-light);
+    margin-top: 1rem;
+}
+
+.craft-row {
+    display: grid;
+    grid-template-columns: 90px 1.1fr 1.6fr 44px;
+    gap: 2rem;
+    align-items: center;
+    padding: 2.2rem 0.5rem;
+    border-bottom: 1px solid var(--border-light);
+    transition: background var(--transition-fast), padding var(--transition-smooth);
+}
+
+.craft-row:hover {
+    background: var(--fill-softer);
+    padding-left: 1.4rem;
+}
+
+.craft-num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.6rem;
+    color: var(--amber);
+}
+
+.craft-row h3 {
+    font-size: 1.45rem;
+    margin: 0;
+}
+
+.craft-row p {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.craft-arrow {
+    color: var(--amber);
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all var(--transition-smooth);
+}
+
+.craft-row:hover .craft-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+    .craft-row {
+        grid-template-columns: 56px 1fr;
+        gap: 0.4rem 1.25rem;
+        padding: 1.6rem 0.25rem;
+    }
+
+    .craft-row p {
+        grid-column: 2;
+    }
+
+    .craft-arrow {
+        display: none;
     }
 }
 
