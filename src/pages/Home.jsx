@@ -95,14 +95,34 @@ const Home = () => {
                             </motion.div>
 
                             <motion.h1 variants={fadeUp} className="hero-title">
-                                Hi, I'm Swarnesh. <br />
-                                <span className="text-gradient">MBA Candidate at UNC Kenan-Flagler Business School</span>
+                                <span className="hero-line">
+                                    {"Hi, I'm Swarnesh.".split(' ').map((word, i) => (
+                                        <motion.span
+                                            key={i}
+                                            className="hero-word"
+                                            initial={{ opacity: 0, y: 36, rotate: 5 }}
+                                            animate={{ opacity: 1, y: 0, rotate: 0 }}
+                                            transition={{ duration: 0.6, delay: 0.2 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                                        >
+                                            {word}&nbsp;
+                                        </motion.span>
+                                    ))}
+                                </span>
+                                <motion.span
+                                    className="text-gradient"
+                                    initial={{ opacity: 0, y: 26 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.7, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                                    style={{ display: 'block' }}
+                                >
+                                    MBA Candidate at UNC Kenan-Flagler Business School
+                                </motion.span>
                             </motion.h1>
 
                             <motion.div variants={fadeUp} className="hero-skills">
                                 {['Product Management', 'AI Strategy', 'Cloud Technology', 'FinTech Payments', 'JPMorganChase'].map((skill) => (
                                     skill === 'FinTech Payments' ? (
-                                        <Link to="/payments" key={skill} className="skill-tag" style={{ cursor: 'pointer', textDecoration: 'none', background: 'rgba(62, 139, 255, 0.15)', borderColor: 'rgba(62, 139, 255, 0.4)' }}>
+                                        <Link to="/payments" key={skill} className="skill-tag" style={{ cursor: 'pointer', textDecoration: 'none', background: 'rgba(53, 114, 174, 0.1)', borderColor: 'rgba(53, 114, 174, 0.4)', color: 'var(--accent-blue)' }}>
                                             {skill} ↗
                                         </Link>
                                     ) : (
@@ -145,6 +165,19 @@ const Home = () => {
                     </motion.div>
                 </div>
             </section>
+
+            {/* Skill ticker — flowing marquee */}
+            <div className="ticker" aria-hidden="true">
+                <div className="ticker-track">
+                    {[0, 1].map((copy) => (
+                        <div className="ticker-item" key={copy}>
+                            {['Product Strategy', 'AI Systems', 'Global Payments', 'Cloud Architecture', 'FinTech', 'Storytelling', 'Go-To-Market', 'Data & Analytics'].map((skill) => (
+                                <span key={skill}>{skill}&nbsp;&nbsp;<span className="tick-star">✦</span></span>
+                            ))}
+                        </div>
+                    ))}
+                </div>
+            </div>
 
             {/* 2. Projects Showcase */}
             <section className="section-padding bg-alternate">

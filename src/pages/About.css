@@ -47,7 +47,7 @@
 
 .highlight-quote {
     padding: 2rem;
-    background: rgba(62, 139, 255, 0.05);
+    background: rgba(201, 138, 61, 0.07);
     border-left: 4px solid var(--accent-blue);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     font-size: 1.25rem;

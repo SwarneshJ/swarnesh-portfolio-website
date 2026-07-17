@@ -46,7 +46,7 @@
     background: var(--accent-blue);
     color: #fff;
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(62, 139, 255, 0.3);
+    box-shadow: 0 5px 15px rgba(53, 114, 174, 0.3);
 }
 
 .footer-bottom {

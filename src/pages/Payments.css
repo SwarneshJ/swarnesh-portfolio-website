@@ -45,11 +45,11 @@
 
 .tech-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(62, 139, 255, 0.3);
+    border-color: rgba(53, 114, 174, 0.3);
 }
 
 .tech-icon-wrapper {
-    background: rgba(62, 139, 255, 0.1);
+    background: rgba(53, 114, 174, 0.1);
     width: 60px;
     height: 60px;
     border-radius: 12px;

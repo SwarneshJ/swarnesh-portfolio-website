@@ -63,9 +63,9 @@
 }
 
 .social-btn:hover {
-    background: rgba(62, 139, 255, 0.1);
-    border-color: rgba(62, 139, 255, 0.3);
-    box-shadow: 0 10px 30px rgba(62, 139, 255, 0.15);
+    background: rgba(53, 114, 174, 0.1);
+    border-color: rgba(53, 114, 174, 0.35);
+    box-shadow: 0 10px 30px rgba(53, 114, 174, 0.15);
 }
 
 .social-btn:hover .social-icon {
