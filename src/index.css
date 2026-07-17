@@ -33,6 +33,11 @@
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Inter', sans-serif;
 
+  /* Fluid type scale */
+  --fs-display: clamp(2.75rem, 5.6vw, 4.35rem);
+  --fs-title: clamp(2rem, 3.4vw, 2.6rem);
+  --fs-sub: clamp(1.02rem, 1.4vw, 1.18rem);
+
   /* Surfaces */
   --fill-soft: rgba(42, 49, 60, 0.055);
   --fill-softer: rgba(42, 49, 60, 0.035);
@@ -328,6 +333,16 @@ ul {
 .ticker-item .tick-star {
   color: var(--amber);
   font-size: 1rem;
+}
+
+.ticker-item .tick-alt {
+  font-family: var(--font-display);
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0.03em;
+  font-weight: 500;
+  font-size: 1.05rem;
+  color: var(--text-body);
 }
 
 @keyframes ticker-scroll {
