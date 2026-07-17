@@ -1,31 +1,8 @@
 /* ===== Journey hero: walking mini-Swarnesh + scrolling scene ===== */
 
 .journey-scene {
-    /* dark theme palette (default) — midnight blue-charcoal, not black */
-    --j-bg: #0C1018;
-    --j-ink: #C6CFDC;
-    --j-ink-soft: rgba(198, 207, 220, 0.52);
-    --j-fill: #161C27;
-    --j-fill-far: #111722;
-    --j-face: #1D2431;
-    --j-win: rgba(198, 210, 228, 0.15);
-    --j-glass: rgba(127, 168, 224, 0.13);
-    --j-amber: #D9A441;
-    --j-amber-deep: #2A2013;
-    --j-green: #4F7B5D;
-    --j-liberty: #6E9B82;
-    --j-cloud: rgba(198, 207, 220, 0.09);
-    --j-char-stroke: #10141C;
-    --j-shadow: rgba(0, 0, 0, 0.5);
-
-    margin-top: 76px;
-    background: var(--j-bg);
-    border-bottom: 1px solid var(--border-light);
-    transition: background-color 0.35s ease;
-}
-
-:root[data-theme='light'] .journey-scene {
-    --j-bg: #F5F1E8;
+    /* daytime paper palette — the site's home world */
+    --j-bg: #F3EFE4;
     --j-ink: #3D4450;
     --j-ink-soft: rgba(61, 68, 80, 0.55);
     --j-fill: #FDFBF6;
@@ -40,6 +17,10 @@
     --j-cloud: rgba(61, 68, 80, 0.09);
     --j-char-stroke: #23272F;
     --j-shadow: rgba(40, 36, 26, 0.2);
+
+    margin-top: 76px;
+    background: var(--j-bg);
+    border-bottom: 1px solid var(--border-light);
 }
 
 .journey-band {
@@ -63,48 +44,18 @@
 }
 
 .journey-sky .j-sun {
-    display: none;
+    display: block;
     fill: var(--j-amber);
     stroke: var(--j-amber);
     stroke-width: 4;
     stroke-linecap: round;
     opacity: 0.9;
+    animation: j-sun-breathe 6s ease-in-out infinite alternate;
 }
 
-.journey-sky .j-moon {
-    display: block;
-    fill: var(--j-ink);
-    opacity: 0.85;
-}
-
-:root[data-theme='light'] .journey-sky .j-sun {
-    display: block;
-}
-
-:root[data-theme='light'] .journey-sky .j-moon {
-    display: none;
-}
-
-.j-star {
-    fill: var(--j-amber);
-    animation: j-twinkle 1.8s ease-in-out infinite alternate;
-}
-
-.j-star.s2 {
-    animation-delay: 0.6s;
-}
-
-.j-star.s3 {
-    animation-delay: 1.1s;
-}
-
-@keyframes j-twinkle {
-    from {
-        opacity: 0.2;
-    }
-
+@keyframes j-sun-breathe {
     to {
-        opacity: 1;
+        transform: scale(1.06) rotate(6deg);
     }
 }
 
@@ -517,13 +468,6 @@
     stroke: var(--j-char-stroke);
     stroke-width: 2;
     fill: none;
-}
-
-/* dark mode: light rims so dark hair/pants read against the night sky */
-:root[data-theme='dark'] .journey-scene .w-hair,
-:root[data-theme='dark'] .journey-scene .w-pant {
-    stroke: #E8EDF5;
-    stroke-width: 2;
 }
 
 /* ===== pause / caption ===== */

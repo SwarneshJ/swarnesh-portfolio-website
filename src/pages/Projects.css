@@ -10,8 +10,8 @@
 }
 
 .flagship-card {
-    border-color: rgba(62, 139, 255, 0.4);
-    box-shadow: 0 0 30px rgba(62, 139, 255, 0.05);
+    border-color: rgba(201, 138, 61, 0.55);
+    box-shadow: 0 0 30px rgba(201, 138, 61, 0.08);
     background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
 }
 
@@ -139,7 +139,7 @@
 }
 
 .btn-icon:hover {
-    background: rgba(62, 139, 255, 0.2);
+    background: rgba(53, 114, 174, 0.15);
     color: var(--accent-cyan);
 }
 
@@ -245,7 +245,7 @@
 }
 
 .modal-nav-btn:hover {
-    background: rgba(62, 139, 255, 0.4);
+    background: rgba(53, 114, 174, 0.4);
     border-color: var(--accent-blue);
 }
 

@@ -398,12 +398,6 @@ const JourneyScene = () => {
                             />
                         ))}
                     </svg>
-                    <svg className="j-moon" viewBox="0 0 120 120">
-                        <path d="M78 24 A40 40 0 1 0 96 82 A32 32 0 0 1 78 24 Z" />
-                        <circle className="j-star s1" cx="24" cy="30" r="2.5" />
-                        <circle className="j-star s2" cx="102" cy="20" r="2" />
-                        <circle className="j-star s3" cx="14" cy="72" r="2" />
-                    </svg>
                 </div>
 
                 <div className="journey-track">

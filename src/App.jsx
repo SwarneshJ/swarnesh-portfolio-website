@@ -6,7 +6,6 @@ import Lenis from 'lenis';
 // Layout
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Atmosphere from './components/Atmosphere';
 import ScrollProgress from './components/ScrollProgress';
 import CardSpotlight from './components/CardSpotlight';
 import { setLenis, scrollToTop } from './smoothScroll';
@@ -58,7 +57,6 @@ function App() {
 
   return (
     <div className="app-wrapper" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      <Atmosphere />
       <ScrollProgress />
       <CardSpotlight />
       <Navbar />
