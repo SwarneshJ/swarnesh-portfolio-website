@@ -1,21 +1,21 @@
 /* ===== Journey hero: walking mini-Swarnesh + scrolling scene ===== */
 
 .journey-scene {
-    /* dark theme palette (default) */
-    --j-bg: #0C0E13;
-    --j-ink: #C9D2DF;
-    --j-ink-soft: rgba(201, 210, 223, 0.55);
-    --j-fill: #141821;
-    --j-fill-far: #10131B;
-    --j-face: #1B2029;
-    --j-win: rgba(201, 210, 223, 0.16);
-    --j-glass: rgba(127, 168, 224, 0.12);
+    /* dark theme palette (default) — midnight blue-charcoal, not black */
+    --j-bg: #0C1018;
+    --j-ink: #C6CFDC;
+    --j-ink-soft: rgba(198, 207, 220, 0.52);
+    --j-fill: #161C27;
+    --j-fill-far: #111722;
+    --j-face: #1D2431;
+    --j-win: rgba(198, 210, 228, 0.15);
+    --j-glass: rgba(127, 168, 224, 0.13);
     --j-amber: #D9A441;
     --j-amber-deep: #2A2013;
     --j-green: #4F7B5D;
     --j-liberty: #6E9B82;
-    --j-cloud: rgba(201, 210, 223, 0.1);
-    --j-char-stroke: #10131B;
+    --j-cloud: rgba(198, 207, 220, 0.09);
+    --j-char-stroke: #10141C;
     --j-shadow: rgba(0, 0, 0, 0.5);
 
     margin-top: 76px;
