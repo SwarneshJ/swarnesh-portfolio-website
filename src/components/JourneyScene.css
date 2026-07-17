@@ -1,0 +1,344 @@
+/* ===== Journey hero: walking mini-Swarnesh + scrolling scene ===== */
+
+.journey-scene {
+    /* dark theme palette (default) */
+    --j-bg: #0C0E13;
+    --j-ink: #C9D2DF;
+    --j-ink-soft: rgba(201, 210, 223, 0.55);
+    --j-fill: #141821;
+    --j-fill-far: #10131B;
+    --j-face: #1B2029;
+    --j-win: rgba(201, 210, 223, 0.16);
+    --j-amber: #D9A441;
+    --j-amber-deep: #2A2013;
+    --j-green: #4F7B5D;
+    --j-cloud: rgba(201, 210, 223, 0.1);
+    --j-char-stroke: #10131B;
+
+    margin-top: 76px;
+    background: var(--j-bg);
+    border-bottom: 1px solid var(--border-light);
+    transition: background-color 0.35s ease;
+}
+
+:root[data-theme='light'] .journey-scene {
+    --j-bg: #F5F1E8;
+    --j-ink: #3D4450;
+    --j-ink-soft: rgba(61, 68, 80, 0.55);
+    --j-fill: #FDFBF6;
+    --j-fill-far: #ECE6D9;
+    --j-face: #EFE9DC;
+    --j-win: rgba(61, 68, 80, 0.13);
+    --j-amber: #C98A3D;
+    --j-amber-deep: #FDFBF6;
+    --j-green: #5E8B6A;
+    --j-cloud: rgba(61, 68, 80, 0.09);
+    --j-char-stroke: #23272F;
+}
+
+.journey-band {
+    position: relative;
+    height: clamp(300px, 44vh, 420px);
+    overflow: hidden;
+}
+
+.journey-track {
+    display: flex;
+    height: 100%;
+    width: max-content;
+    animation: j-scroll 55s linear infinite;
+    will-change: transform;
+}
+
+@keyframes j-scroll {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.journey-strip {
+    display: block;
+    height: 100%;
+    width: auto;
+    flex-shrink: 0;
+}
+
+/* ===== scene element classes ===== */
+.j-ink {
+    stroke: var(--j-ink);
+    fill: none;
+}
+
+.j-ink-f {
+    fill: var(--j-ink);
+}
+
+.j-bld {
+    fill: var(--j-fill);
+    stroke: var(--j-ink);
+    stroke-width: 3;
+}
+
+.j-bld-far {
+    fill: var(--j-fill-far);
+    stroke: var(--j-ink-soft);
+    stroke-width: 2;
+}
+
+.j-face {
+    fill: var(--j-face);
+    stroke: var(--j-ink);
+    stroke-width: 2.5;
+}
+
+.j-win {
+    fill: var(--j-win);
+    stroke: var(--j-ink);
+    stroke-width: 2;
+}
+
+.j-amber-w {
+    fill: var(--j-amber);
+    opacity: 0.85;
+    stroke: var(--j-ink);
+    stroke-width: 2;
+}
+
+.j-amber-f {
+    fill: var(--j-amber);
+    stroke: var(--j-ink);
+    stroke-width: 2.5;
+}
+
+.j-sign {
+    fill: var(--j-amber);
+    stroke: var(--j-ink);
+    stroke-width: 2.5;
+}
+
+.j-awning {
+    fill: var(--j-amber);
+}
+
+.j-sky-dome {
+    fill: var(--j-fill);
+}
+
+.j-leaf {
+    fill: var(--j-green);
+    opacity: 0.9;
+}
+
+.j-cloud ellipse {
+    fill: var(--j-cloud);
+}
+
+.j-text {
+    fill: var(--j-ink);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.j-text-soft {
+    fill: var(--j-ink-soft);
+    font-family: var(--font-heading);
+    font-weight: 600;
+}
+
+.j-text-inv {
+    fill: var(--j-amber-deep);
+    font-family: var(--font-heading);
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.j-plane {
+    animation: j-plane-bob 3.4s ease-in-out infinite alternate;
+}
+
+@keyframes j-plane-bob {
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+/* ===== walker ===== */
+.journey-walker {
+    position: absolute;
+    bottom: 7.3%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 50%;
+    filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.25));
+}
+
+.journey-walker svg {
+    height: 100%;
+    width: auto;
+    animation: j-bob 0.32s ease-in-out infinite alternate;
+}
+
+@keyframes j-bob {
+    to {
+        transform: translateY(-4px);
+    }
+}
+
+.w-limb {
+    transform-box: fill-box;
+    transform-origin: 50% 12%;
+}
+
+.w-leg-front {
+    animation: j-swing-leg 0.64s ease-in-out infinite alternate;
+}
+
+.w-leg-back {
+    animation: j-swing-leg 0.64s ease-in-out infinite alternate-reverse;
+}
+
+.w-arm-front {
+    animation: j-swing-arm 0.64s ease-in-out infinite alternate-reverse;
+}
+
+.w-arm-back {
+    animation: j-swing-arm 0.64s ease-in-out infinite alternate;
+}
+
+@keyframes j-swing-leg {
+    from {
+        transform: rotate(-26deg);
+    }
+
+    to {
+        transform: rotate(26deg);
+    }
+}
+
+@keyframes j-swing-arm {
+    from {
+        transform: rotate(-20deg);
+    }
+
+    to {
+        transform: rotate(20deg);
+    }
+}
+
+.w-skin {
+    fill: #EDBE93;
+    stroke: var(--j-char-stroke);
+    stroke-width: 2;
+}
+
+.w-hair {
+    fill: #20232B;
+    stroke: var(--j-char-stroke);
+    stroke-width: 2;
+}
+
+.w-shirt {
+    fill: #86AEE8;
+    stroke: var(--j-char-stroke);
+    stroke-width: 2.5;
+}
+
+.w-collar {
+    stroke: var(--j-char-stroke);
+    stroke-width: 2;
+}
+
+.w-pant {
+    fill: #333B4E;
+    stroke: var(--j-char-stroke);
+    stroke-width: 2;
+}
+
+.w-shoe {
+    fill: #F4F5F7;
+    stroke: var(--j-char-stroke);
+    stroke-width: 2;
+}
+
+.w-glass {
+    fill: rgba(255, 255, 255, 0.14);
+    stroke: var(--j-char-stroke);
+    stroke-width: 2.5;
+}
+
+.w-smile {
+    stroke: var(--j-char-stroke);
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+/* dark mode: give the dark hair/pants a light rim so they read on dark bg */
+:root[data-theme='dark'] .journey-scene .w-hair,
+:root[data-theme='dark'] .journey-scene .w-pant {
+    stroke: #E8EDF5;
+    stroke-width: 2;
+}
+
+/* ===== pause / caption ===== */
+.journey-toggle {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--fill-soft);
+    border: 1px solid var(--border-light);
+    color: var(--j-ink);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.journey-toggle:hover {
+    border-color: var(--border-glow);
+}
+
+.journey-scene.paused .journey-track,
+.journey-scene.paused .journey-walker svg,
+.journey-scene.paused .w-limb,
+.journey-scene.paused .j-plane {
+    animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .journey-track,
+    .journey-walker svg,
+    .w-limb,
+    .j-plane {
+        animation-play-state: paused;
+    }
+}
+
+.journey-caption {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-family: var(--font-heading);
+    letter-spacing: 0.06em;
+    padding: 0.8rem 1.25rem;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .journey-scene {
+        margin-top: 64px;
+    }
+
+    .journey-band {
+        height: clamp(220px, 34vh, 300px);
+    }
+
+    .journey-walker {
+        height: 56%;
+    }
+}

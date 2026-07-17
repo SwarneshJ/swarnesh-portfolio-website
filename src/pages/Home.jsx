@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useState, useRef } from 'react';
 import { stopScroll, startScroll } from '../smoothScroll';
 import Magnetic from '../components/Magnetic';
+import JourneyScene from '../components/JourneyScene';
 import './Projects.css';
 import './Home.css';
 
@@ -75,8 +76,11 @@ const Home = () => {
         >
             <div className="bg-glow" style={{ top: '-20%', left: '-10%' }} />
 
+            {/* 0. The Journey (walking scene) */}
+            <JourneyScene />
+
             {/* 1. Who I Am (Hero Identity) */}
-            <section className="hero-section" ref={heroRef}>
+            <section className="hero-section" ref={heroRef} style={{ minHeight: 'auto', paddingTop: '4rem', paddingBottom: '4rem' }}>
                 <div className="container">
                     <motion.div className="hero-flex" style={{ opacity: heroFade }}>
                         <motion.div
