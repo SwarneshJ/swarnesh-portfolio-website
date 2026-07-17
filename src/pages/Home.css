@@ -82,8 +82,8 @@
 
 .skill-tag {
     padding: 0.4rem 1rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--fill-softer);
+    border: 1px solid var(--border-light);
     border-radius: 20px;
     font-size: 0.9rem;
     color: var(--text-muted);
@@ -237,6 +237,10 @@
     animation: hero-float 6s ease-in-out infinite;
 }
 
+:root[data-theme='light'] .hero-image-full {
+    box-shadow: 0 25px 60px -18px rgba(16, 24, 40, 0.25);
+}
+
 @keyframes hero-float {
 
     0%,
@@ -300,7 +304,7 @@
     align-items: flex-end;
     margin-bottom: 2rem;
     padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--fill-softer);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-md);
 }
@@ -460,7 +464,7 @@
 .edu-details {
     margin-top: 1rem;
     padding-top: 1rem;
-    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    border-top: 1px dashed var(--border-light);
 }
 
 .edu-title {

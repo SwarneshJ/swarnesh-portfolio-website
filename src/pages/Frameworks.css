@@ -31,7 +31,7 @@
 
 .fc-icon {
     font-size: 2rem;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--fill-soft);
     width: 50px;
     height: 50px;
     display: flex;
@@ -71,7 +71,7 @@
 .fc-ex {
     font-size: 0.95rem;
     color: var(--text-main);
-    background: rgba(10, 10, 10, 0.4);
+    background: var(--fill-softer);
     padding: 1.25rem;
     border-radius: var(--radius-sm);
     border-left: 2px solid var(--accent-cyan);
