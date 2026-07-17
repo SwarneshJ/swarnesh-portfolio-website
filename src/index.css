@@ -1,12 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
 
 :root {
-  /* Core Dark Theme Colors */
-  --bg-primary: #08080A;
-  /* Deep obsidian black */
-  --bg-secondary: #121214;
-  /* Slightly lighter panel background */
-  --bg-glass: rgba(16, 16, 20, 0.7);
+  /* Core Dark Theme — "midnight, not void": blue-tinted charcoal that steps
+     lighter with elevation (page -> section -> card) instead of near-black */
+  --bg-primary: #0E1116;
+  --bg-secondary: #151A22;
+  --bg-glass: rgba(17, 21, 28, 0.72);
 
   /* Vibrant Accents */
   --accent-blue: #3E8BFF;
@@ -16,15 +15,15 @@
   --accent-purple: #9D4EDD;
   /* Deep violet for depth */
 
-  /* UI Elements */
-  --border-light: rgba(255, 255, 255, 0.08);
-  --border-glow: rgba(62, 139, 255, 0.35);
+  /* UI Elements — slate-tinted hairlines instead of white-on-black */
+  --border-light: rgba(151, 168, 192, 0.13);
+  --border-glow: rgba(94, 145, 255, 0.42);
 
-  /* Text — near-white reserved for headings, soft off-white for body */
-  --text-main: #F2F3F5;
-  --text-body: #C7C8CE;
-  --text-secondary: #C7C8CE;
-  --text-muted: #9A9BA3;
+  /* Text — near-white headings, blue-cast body for cohesion with surfaces */
+  --text-main: #F3F5F8;
+  --text-body: #B9C2CE;
+  --text-secondary: #B9C2CE;
+  --text-muted: #8B94A3;
   --text-dark: #121212;
 
   /* Typography */
@@ -32,13 +31,14 @@
   --font-body: 'Inter', sans-serif;
 
   /* Theme-aware fills & surfaces */
-  --fill-soft: rgba(255, 255, 255, 0.05);
-  --fill-softer: rgba(255, 255, 255, 0.03);
-  --fill-soft-hover: rgba(255, 255, 255, 0.1);
-  --card-glass: rgba(18, 18, 22, 0.66);
-  --card-sheen: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 100%);
-  --shadow-card-hover: 0 20px 45px rgba(0, 0, 0, 0.55);
-  --spot-strength: 0.18;
+  --fill-soft: rgba(151, 168, 192, 0.08);
+  --fill-softer: rgba(151, 168, 192, 0.05);
+  --fill-soft-hover: rgba(151, 168, 192, 0.14);
+  --card-glass: rgba(24, 30, 40, 0.72);
+  --card-sheen: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+  --card-edge: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --shadow-card-hover: 0 24px 48px -14px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --spot-strength: 0.16;
 
   /* Utilities */
   --radius-sm: 8px;
@@ -77,6 +77,7 @@
   --fill-soft-hover: rgba(15, 20, 30, 0.09);
   --card-glass: #FFFFFF;
   --card-sheen: none;
+  --card-edge: 0 0 0 0 transparent;
   --shadow-card-hover: 0 24px 48px -16px rgba(16, 24, 40, 0.18);
   --spot-strength: 0.08;
 
@@ -176,9 +177,10 @@ ul {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(55% 50% at 12% 8%, rgba(62, 139, 255, 0.12), transparent 60%),
-    radial-gradient(45% 45% at 88% 14%, rgba(0, 228, 255, 0.10), transparent 60%),
-    radial-gradient(60% 55% at 50% 108%, rgba(157, 78, 221, 0.12), transparent 60%);
+    radial-gradient(70% 42% at 50% -4%, rgba(94, 125, 190, 0.14), transparent 65%),
+    radial-gradient(55% 50% at 12% 8%, rgba(62, 139, 255, 0.09), transparent 60%),
+    radial-gradient(45% 45% at 88% 14%, rgba(0, 228, 255, 0.07), transparent 60%),
+    radial-gradient(60% 55% at 50% 108%, rgba(157, 78, 221, 0.09), transparent 60%);
 }
 
 .atmosphere::after {
@@ -186,7 +188,7 @@ ul {
   position: absolute;
   inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: 0.04;
+  opacity: 0.028;
   mix-blend-mode: overlay;
 }
 
@@ -194,7 +196,7 @@ ul {
   position: absolute;
   border-radius: 50%;
   filter: blur(100px);
-  opacity: 0.4;
+  opacity: 0.28;
   will-change: transform;
 }
 
@@ -394,6 +396,7 @@ ul {
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
   padding: 2.5rem;
+  box-shadow: var(--card-edge);
   transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth), --spot var(--transition-smooth);
   position: relative;
   overflow: hidden;
