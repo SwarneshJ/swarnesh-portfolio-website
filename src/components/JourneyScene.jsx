@@ -313,8 +313,13 @@ export const Walker = () => (
         <g className="w-rig">
             {/* back arm (behind torso) */}
             <g className="w-limb w-arm-back">
-                <path className="w-sleeve" d="M68 104 Q62 116 62 126 L76 128 Q76 116 80 106 Z" />
-                <path className="w-skin" d="M63 122 Q60 138 62 154 L72 154 Q72 138 75 124 Z" />
+                {/* upper arm: shoulder to elbow */}
+                <path className="w-sleeve-far" d="M65 98 L76 99 L75 130 L66 130 Z" />
+                {/* forearm hinges at the elbow, like the shin does at the knee */}
+                <g className="w-limb w-forearm-back">
+                    <path className="w-skin-far" d="M66 127 L75 127 L74 152 L67 152 Z" />
+                    <circle className="w-skin-far" cx="70.5" cy="156.5" r="5.4" />
+                </g>
             </g>
 
             {/* back leg: thigh + articulated shin */}
@@ -368,8 +373,13 @@ export const Walker = () => (
 
             {/* front arm */}
             <g className="w-limb w-arm-front">
-                <path className="w-sleeve" d="M78 104 Q86 114 87 126 L73 130 Q73 116 71 108 Z" />
-                <path className="w-skin" d="M76 124 Q80 140 79 156 L69 156 Q70 140 66 126 Z" />
+                {/* upper arm: shoulder to elbow */}
+                <path className="w-sleeve" d="M75 98 L86 99 L85 130 L76 130 Z" />
+                {/* forearm hinges at the elbow, and ends in an actual hand */}
+                <g className="w-limb w-forearm-front">
+                    <path className="w-skin" d="M76 127 L85 127 L84 152 L77 152 Z" />
+                    <circle className="w-skin" cx="80.5" cy="156.5" r="5.4" />
+                </g>
             </g>
         </g>
     </svg>
