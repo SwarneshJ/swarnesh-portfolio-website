@@ -374,10 +374,10 @@
     }
 }
 
-/* arms swing opposite their same-side leg */
+/* arms swing opposite their same-side leg, pivoting at the shoulder */
 .w-arm-front,
 .w-arm-back {
-    transform-origin: 50% 8%;
+    transform-origin: 50% 3%;
     animation: j-gait-arm 0.72s ease-in-out infinite;
 }
 
@@ -396,6 +396,32 @@
 
     100% {
         transform: rotate(26deg);
+    }
+}
+
+/* elbows stay softly bent and flex further on the forward swing — a rigid
+   straight arm is what made the limb read as a detached slab */
+.w-forearm-front,
+.w-forearm-back {
+    transform-origin: 50% 5%;
+    animation: j-gait-forearm 0.72s ease-in-out infinite;
+}
+
+.w-forearm-front {
+    animation-delay: -0.36s;
+}
+
+@keyframes j-gait-forearm {
+    0% {
+        transform: rotate(-8deg);
+    }
+
+    50% {
+        transform: rotate(-24deg);
+    }
+
+    100% {
+        transform: rotate(-8deg);
     }
 }
 
@@ -427,6 +453,30 @@
     fill: #86AEE8;
     stroke: var(--j-char-stroke);
     stroke-width: 2.5;
+}
+
+/* The far-side limb sits in shadow, so the two arms read as two arms
+   rather than one confusing shape when they cross. */
+.w-sleeve-far {
+    fill: #6C90C6;
+    stroke: var(--j-char-stroke);
+    stroke-width: 2.5;
+}
+
+.w-skin-far {
+    fill: #D2A176;
+    stroke: var(--j-char-stroke);
+    stroke-width: 2;
+}
+
+/* Rounded joins keep the limb ends soft instead of sharply cut. */
+.w-sleeve,
+.w-sleeve-far,
+.w-skin,
+.w-skin-far,
+.w-pant {
+    stroke-linejoin: round;
+    stroke-linecap: round;
 }
 
 .w-collar {
