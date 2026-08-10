@@ -1,0 +1,238 @@
+/* Memo sheet — translucent material, grabbable, per the apple-design skill. */
+
+.sheet-scrim {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    /* Dim to focus: this is a modal task, so the background is pushed back
+       behind a scrim rather than left in the flow (§12). The tint is driven by
+       the drag, so it lifts continuously as the sheet is thrown away. */
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+
+.sheet-anchor {
+    width: 100%;
+    max-width: 1000px;
+    will-change: transform, opacity, filter;
+}
+
+.sheet {
+    display: flex;
+    flex-direction: column;
+    height: min(80vh, 800px);
+    overflow: hidden;
+    border-radius: 22px;
+    /* A big surface reads as thicker material: stronger blur, deeper shadow
+       than a small chip, with a bright top edge where light catches it (§12). */
+    background: rgba(252, 250, 244, 0.86);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow:
+        0 40px 80px -20px rgba(35, 30, 20, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    touch-action: none;
+    cursor: grab;
+}
+
+.sheet.is-grabbed {
+    cursor: grabbing;
+}
+
+/* Affordance: the grip says "this can be moved" before anyone tries. */
+.sheet-grip {
+    width: 42px;
+    height: 5px;
+    border-radius: 3px;
+    margin: 10px auto 0;
+    background: rgba(35, 39, 47, 0.22);
+    flex-shrink: 0;
+}
+
+.sheet-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.85rem 1.5rem 1rem;
+    flex-shrink: 0;
+}
+
+.sheet-head h3 {
+    margin: 0;
+    font-size: 1.02rem;
+    font-weight: 600;
+    /* Vibrancy: over a translucent surface, text needs weight and a touch of
+       tracking rather than flat grey, or it dissolves into the blur (§12). */
+    letter-spacing: 0.005em;
+    color: var(--text-main);
+}
+
+.sheet-close,
+.sheet-nav,
+.sheet-dot {
+    border: none;
+    cursor: pointer;
+    /* §1: presses register instantly, on pointer-down. */
+    transition: transform 100ms ease-out, background 160ms ease, color 160ms ease;
+}
+
+.sheet-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(35, 39, 47, 0.07);
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+.sheet-close:hover {
+    background: rgba(35, 39, 47, 0.13);
+    color: var(--text-main);
+}
+
+.sheet-close:active {
+    transform: scale(0.9);
+}
+
+.sheet-body {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(28, 24, 16, 0.06);
+    overflow: hidden;
+}
+
+.sheet-slide {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.sheet-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    /* A lighter material on top of the sheet draws attention to the control,
+       and never stacks light-on-light — it sits over the darker body (§12). */
+    background: rgba(252, 250, 244, 0.82);
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    box-shadow: 0 6px 18px -6px rgba(35, 30, 20, 0.4);
+    color: var(--text-main);
+}
+
+.sheet-nav:hover {
+    background: rgba(252, 250, 244, 0.96);
+}
+
+.sheet-nav:active {
+    transform: translateY(-50%) scale(0.92);
+}
+
+.sheet-nav.prev {
+    left: 1rem;
+}
+
+.sheet-nav.next {
+    right: 1rem;
+}
+
+.sheet-foot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.9rem;
+    flex-shrink: 0;
+}
+
+.sheet-dot {
+    width: 7px;
+    height: 7px;
+    padding: 0;
+    border-radius: 50%;
+    background: rgba(35, 39, 47, 0.24);
+}
+
+.sheet-dot:hover {
+    background: rgba(35, 39, 47, 0.42);
+}
+
+.sheet-dot.active {
+    background: var(--amber);
+    transform: scale(1.45);
+}
+
+.sheet-dot:active {
+    transform: scale(0.85);
+}
+
+@media (max-width: 768px) {
+    .sheet-scrim {
+        padding: 1rem;
+    }
+
+    .sheet {
+        height: min(74vh, 620px);
+    }
+
+    .sheet-nav {
+        width: 36px;
+        height: 36px;
+    }
+
+    .sheet-head h3 {
+        font-size: 0.92rem;
+    }
+}
+
+/* §14: frostier and solid when transparency is unwelcome. */
+@media (prefers-reduced-transparency: reduce) {
+
+    .sheet,
+    .sheet-nav {
+        background: #FCFAF4;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    .sheet-scrim {
+        background: rgba(28, 24, 16, 0.8);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+}
+
+/* §14: near-solid surfaces with defined borders at higher contrast. */
+@media (prefers-contrast: more) {
+    .sheet {
+        background: #FFFFFF;
+        border: 2px solid var(--text-main);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    .sheet-nav {
+        background: #FFFFFF;
+        border: 2px solid var(--text-main);
+    }
+}

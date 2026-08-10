@@ -1,10 +1,10 @@
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Download, Briefcase, GraduationCap, ExternalLink, Github, Presentation, X, ChevronLeft, ChevronRight, BookOpen } from 'lucide-react';
+import { ArrowRight, Download, Briefcase, GraduationCap, ExternalLink, Github, Presentation, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState, useRef } from 'react';
-import { stopScroll, startScroll } from '../smoothScroll';
 import Magnetic from '../components/Magnetic';
 import JourneyScene from '../components/JourneyScene';
+import MemoSheet from '../components/MemoSheet';
 import './Projects.css';
 import './Home.css';
 
@@ -22,15 +22,9 @@ const fadeUp = {
     show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
 
-const modalVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.3, ease: 'easeOut' } },
-    exit: { opacity: 0, scale: 0.95, transition: { duration: 0.2, ease: 'easeIn' } }
-};
-
 const Home = () => {
     const [selectedMemo, setSelectedMemo] = useState(null);
-    const [currentSlide, setCurrentSlide] = useState(0);
+    const [memoOrigin, setMemoOrigin] = useState(null);
 
     // Subtle scroll-driven parallax across the hero.
     const heroRef = useRef(null);
@@ -42,30 +36,15 @@ const Home = () => {
     const imageY = useTransform(scrollYProgress, [0, 1], [0, 120]);
     const heroFade = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
 
-    const openMemo = (project) => {
+    // Remember where the sheet was summoned from, so it can emerge from — and
+    // return to — that exact button (§7 spatial consistency).
+    const openMemo = (project, event) => {
+        const rect = event.currentTarget.getBoundingClientRect();
+        setMemoOrigin({ x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 });
         setSelectedMemo(project);
-        setCurrentSlide(0);
-        document.body.style.overflow = 'hidden';
-        stopScroll();
     };
 
-    const closeMemo = () => {
-        setSelectedMemo(null);
-        document.body.style.overflow = 'auto';
-        startScroll();
-    };
-
-    const nextSlide = () => {
-        if (selectedMemo) {
-            setCurrentSlide((prev) => (prev === selectedMemo.memoSlides.length - 1 ? 0 : prev + 1));
-        }
-    };
-
-    const prevSlide = () => {
-        if (selectedMemo) {
-            setCurrentSlide((prev) => (prev === 0 ? selectedMemo.memoSlides.length - 1 : prev - 1));
-        }
-    };
+    const closeMemo = () => setSelectedMemo(null);
 
     return (
         <motion.div
@@ -253,7 +232,7 @@ const Home = () => {
                                                 <button
                                                     className="btn-icon"
                                                     style={{ background: 'var(--accent-blue)', color: 'white', order: -1 }}
-                                                    onClick={() => openMemo(project)}
+                                                    onClick={(e) => openMemo(project, e)}
                                                 >
                                                     <Presentation size={18} /> Executive Memo
                                                 </button>
@@ -452,63 +431,9 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Executive Memo Modal */}
             <AnimatePresence>
                 {selectedMemo && (
-                    <motion.div
-                        className="modal-overlay"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        onClick={closeMemo}
-                    >
-                        <motion.div
-                            className="modal-content"
-                            variants={modalVariants}
-                            initial="hidden"
-                            animate="visible"
-                            exit="exit"
-                            onClick={(e) => e.stopPropagation()} // Prevent clicks inside modal from closing it
-                        >
-                            <div className="modal-header">
-                                <h3>{selectedMemo.title} - Executive Memo</h3>
-                                <button className="close-btn" onClick={closeMemo}>
-                                    <X size={24} />
-                                </button>
-                            </div>
-
-                            <div className="modal-body">
-                                <button className="modal-nav-btn prev" onClick={prevSlide}>
-                                    <ChevronLeft size={24} />
-                                </button>
-
-                                <img
-                                    src={selectedMemo.memoSlides[currentSlide]}
-                                    alt={`Slide ${currentSlide + 1}`}
-                                    className="slide-image"
-                                    onError={(e) => {
-                                        // Fallback if user hasn't uploaded images yet
-                                        e.target.onerror = null;
-                                        e.target.src = `https://placehold.co/1000x562/1a1a1a/3e8bff?text=Placeholder+Slide+${currentSlide + 1}%0A(Export+PPTX+as+Images+and+place+in+src/assets/memo/)`;
-                                    }}
-                                />
-
-                                <button className="modal-nav-btn next" onClick={nextSlide}>
-                                    <ChevronRight size={24} />
-                                </button>
-                            </div>
-
-                            <div className="modal-footer">
-                                {selectedMemo.memoSlides.map((_, idx) => (
-                                    <div
-                                        key={idx}
-                                        className={`slide-dot ${idx === currentSlide ? 'active' : ''}`}
-                                        onClick={() => setCurrentSlide(idx)}
-                                    />
-                                ))}
-                            </div>
-                        </motion.div>
-                    </motion.div>
+                    <MemoSheet project={selectedMemo} origin={memoOrigin} onClose={closeMemo} />
                 )}
             </AnimatePresence>
 
