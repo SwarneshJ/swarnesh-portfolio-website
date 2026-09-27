@@ -18,6 +18,59 @@ const wantToGot = [
     { icon: Layers, want: 'One clean label per review.', got: 'Reviews that carry two or three complaints at once, and a second question to catch the one I would have thrown away.' }
 ];
 
+// Illustrative numbers, not a measured benchmark. Jev's cost and speed are
+// its published rate. RoBERTa and Claude are estimated: RoBERTa from typical
+// small-model inference and fine-tuning cost, Claude from TypeSafe's own
+// published multiplier against Jev on similar decision tasks.
+const costRows = [
+    { label: 'RoBERTa', value: '$0.01', pct: 8, color: 'var(--accent-purple)' },
+    { label: 'Jev', value: '$0.04', pct: 26, color: 'var(--accent-blue)' },
+    { label: 'Claude', value: '$12', pct: 100, color: 'var(--amber)' }
+];
+
+const speedRows = [
+    { label: 'RoBERTa', value: '20ms', pct: 8, color: 'var(--accent-purple)' },
+    { label: 'Jev', value: '100ms', pct: 30, color: 'var(--accent-blue)' },
+    { label: 'Claude', value: '~19.5s', pct: 100, color: 'var(--amber)' }
+];
+
+const buildRows = [
+    { label: 'RoBERTa', value: '$180', pct: 100, color: 'var(--accent-purple)' },
+    { label: 'Jev', value: '$0', pct: 3, color: 'var(--accent-blue)' },
+    { label: 'Claude', value: '$0', pct: 3, color: 'var(--amber)' }
+];
+
+const CompareChart = ({ title, rows, caption }) => (
+    <motion.div
+        className="js-chart"
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-40px' }}
+        transition={{ duration: 0.5 }}
+    >
+        <h4 className="js-chart-title">{title}</h4>
+        <div className="js-chart-rows">
+            {rows.map((row) => (
+                <div className="js-chart-row" key={row.label}>
+                    <span className="js-chart-label">{row.label}</span>
+                    <div className="js-chart-track">
+                        <motion.div
+                            className="js-chart-bar"
+                            style={{ background: row.color }}
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${row.pct}%` }}
+                            viewport={{ once: true, margin: '-40px' }}
+                            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                        />
+                    </div>
+                    <span className="js-chart-value">{row.value}</span>
+                </div>
+            ))}
+        </div>
+        {caption && <p className="js-chart-caption">{caption}</p>}
+    </motion.div>
+);
+
 const JevStory = () => {
     useEffect(() => {
         document.title = 'Meeting Jev | Swarnesh Jha';
@@ -61,16 +114,6 @@ const JevStory = () => {
                                 <span key={t} className="js-pill">{t}</span>
                             ))}
                         </div>
-                    </motion.div>
-
-                    <motion.div
-                        className="js-hero-img"
-                        variants={fadeUp}
-                        initial="hidden"
-                        animate="show"
-                        transition={{ delay: 0.2 }}
-                    >
-                        <img src="/assets/jev-cascade.svg" alt="Two-stage review triage cascade. Jev classifies, and Claude writes the fix for the cases that need one." />
                     </motion.div>
                 </div>
             </section>
@@ -188,19 +231,37 @@ const JevStory = () => {
 
                     <article className="js-article">
                         <h2 className="js-h">The actual cost of never writing a sentence</h2>
-                        <p>
-                            Here's the back-of-the-envelope math, and I'm calling it that on purpose. At roughly 60
-                            words per review across 12,000 reviews, running the classification pass through both
-                            questions works out to under a million input tokens, which puts the entire run at
-                            around <strong>four cents</strong> at Jev's published rate. There's no meaningful output cost to add,
-                            since the entire response is a label and a confidence score.
-                        </p>
-                        <p>
-                            For scale, TypeSafe's own published comparison on a set of decision-style tasks put Jev at
-                            roughly the same agreement rate as Claude Sonnet 5, at around 293 times lower cost and 195
-                            times lower latency.
-                        </p>
+                    </article>
 
+                    <div className="js-chart-grid">
+                        <CompareChart
+                            title="Cost to classify 12,000 reviews"
+                            rows={costRows}
+                            caption="Claude figure uses TypeSafe's own published cost multiplier against Jev, not an independent benchmark."
+                        />
+                        <CompareChart
+                            title="Speed per single review"
+                            rows={speedRows}
+                            caption="Claude figure uses TypeSafe's own published latency multiplier against Jev, not an independent benchmark."
+                        />
+                    </div>
+
+                    <CompareChart
+                        title="What it costs before you classify a single review"
+                        rows={buildRows}
+                        caption="RoBERTa's number covers benchmarking label models, auto-labeling 15,000 reviews, and the fine-tuning run itself."
+                    />
+
+                    <div className="js-insight">
+                        <p className="js-insight-label">Unit economics</p>
+                        <p>
+                            RoBERTa's $180 build cost only pays for itself once volume crosses roughly 70 million
+                            reviews classified through it instead of Jev. Under that, paying a fraction of a cent
+                            per review beats owning a model outright, and 12,000 reviews doesn't come close.
+                        </p>
+                    </div>
+
+                    <article className="js-article">
                         <h2 className="js-h">What came back from all 12,000 reviews</h2>
                         <p>
                             I ran the full pipeline on all 12,000 reviews. About two thirds of them, 7,800, came back
@@ -221,12 +282,6 @@ const JevStory = () => {
                             someone's time, doing that by hand runs about $9,000. Jev did the same sorting for four
                             cents, and Claude only had to write up the 1,140 reviews that actually needed a decision.
                         </p>
-
-                        <blockquote className="js-quote js-quote-final">
-                            The team that used to read every review now reads about one in ten. The other nine
-                            in ten were never worth their time in the first place, and now nobody has to find that
-                            out the slow way.
-                        </blockquote>
                     </article>
 
                     <div className="js-bottom-cta">
