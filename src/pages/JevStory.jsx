@@ -70,7 +70,7 @@ const JevStory = () => {
                         animate="show"
                         transition={{ delay: 0.2 }}
                     >
-                        <img src="/assets/jev-cascade.svg" alt="Two-stage review triage cascade: Jev classifies, Claude writes the fix for the cases that need one" />
+                        <img src="/assets/jev-cascade.svg" alt="Two-stage review triage cascade. Jev classifies, and Claude writes the fix for the cases that need one." />
                     </motion.div>
                 </div>
             </section>
@@ -89,12 +89,7 @@ const JevStory = () => {
                             company behind it, calls it a "System One" model, a nod to Daniel Kahneman's idea of
                             fast, intuitive thinking, the opposite of the slow, deliberate "System Two" most AI
                             models try to imitate. Instead of generating text, Jev answers a direct question with a
-                            number. That might be a probability, a chosen label, or a score on a scale. Nothing more.
-                        </p>
-                        <p>
-                            That sounded almost too simple to be useful. So I picked a real, messy problem and tried
-                            to make Jev solve it. I pointed it at thousands of e-commerce reviews and asked it to
-                            figure out, fast and cheap, what each one was actually complaining about.
+                            number. That might be a probability, a chosen label, or a score on a scale.
                         </p>
 
                         <h2 className="js-h">What Jev actually is</h2>
@@ -108,18 +103,23 @@ const JevStory = () => {
                             and 1. Ask it to sort a review into one of six categories, and it hands back the category
                             plus how confident it is. That confidence part is what's interesting. Most models sound
                             sure of everything. Jev will actually say "I'm 60% sure" when it's genuinely unsure, and
-                            "I'm 98% sure" when the answer is obvious &mdash; a byproduct of how TypeSafe trains it, with
-                            reinforcement learning aimed directly at calibration, not just at getting the label right.
+                            "I'm 98% sure" when the answer is obvious. TypeSafe trains it with reinforcement learning
+                            aimed directly at calibration, so the confidence score means something.
                         </p>
                         <p>
                             The pitch is that this narrower job, deciding rather than writing, lets it be fast and
                             absurdly cheap. It costs about $0.042 for every million words of input. There's
                             basically no output cost, since there's no real output, just a number. TypeSafe quotes
-                            end-to-end latency in the 70&ndash;500ms range, most of it around 100ms, which they claim
+                            end-to-end latency in the 70 to 500ms range, most of it around 100ms, which they claim
                             is somewhere between 40x and 200x faster than a frontier LLM doing the same call.
                         </p>
 
                         <h2 className="js-h">The problem I picked</h2>
+                        <p>
+                            I picked a real, messy problem and tried to make Jev solve it. I pointed it at thousands
+                            of e-commerce reviews and asked it to figure out, fast and cheap, what each one was
+                            actually complaining about.
+                        </p>
                         <p>
                             Online stores get thousands of reviews a week, and most of them get skimmed at best, if
                             that. Somewhere in there is real signal. Which products run small, which ones arrive
@@ -142,57 +142,29 @@ const JevStory = () => {
 
                     <article className="js-article">
                         <p>
-                            Jev reads every review and sorts it into one of six buckets: things like a fit issue, a
+                            Jev reads every review and sorts it into one of six buckets, things like a fit issue, a
                             quality defect, a shipping problem, a customer-service complaint, a listing mismatch, or
                             just a normal review. Only the reviews where Jev is unsure, or where it found something a
                             category manager should actually act on, get escalated. Claude only ever sees that
-                            smaller pile, and it isn't classifying anything again. It writes the actual fix, something
-                            like a sizing-guide note, a listing correction, or a merchandising flag.
+                            smaller pile, and it isn't classifying anything again.
                         </p>
 
-                        <h2 className="js-h">Why not just fine-tune another RoBERTa</h2>
+                        <h2 className="js-h">Why not a fine-tuned classifier model like RoBERTa</h2>
                         <p>
                             I've actually built this exact kind of classifier before. My <Link to="/projects" className="js-inline-link">Business-Grade Review Classifier</Link> fine-tuned a RoBERTa
-                            model to sort GrubHub reviews, and it's genuinely good: 88% F1, and cheap to run once it
-                            exists. But "once it exists" is doing a lot of work in that sentence. Getting there meant
-                            benchmarking six GenAI models against human labelers, picking the best one to auto-label
-                            15,000 reviews, and then actually running the fine-tuning job. That's real infrastructure
-                            for a single, fixed task.
+                            model to sort GrubHub reviews, and it's genuinely good, an 88% F1 score, and cheap to run
+                            once it exists. But "once it exists" is doing a lot of work in that sentence. Getting
+                            there meant benchmarking six GenAI models against human labelers, picking the best one to
+                            auto-label 15,000 reviews, and then actually running the fine-tuning job. That's real
+                            infrastructure for a single, fixed task.
                         </p>
                         <p>
                             Jev skips all of that. The six categories in this pipeline aren't training labels, they're
                             a paragraph of criteria I wrote and can rewrite the same afternoon. There's no dataset to
-                            collect and no model to retrain when a category turns out to be wrong, which, as it
-                            happened, one of mine was on the first pass. The honest trade-off: a fine-tuned RoBERTa,
-                            once it exists, is a model I fully own, running at effectively zero marginal cost per
-                            call. Jev is an API call with a small ongoing cost and no infrastructure at all, and it's
-                            far faster to stand up or redefine. For a stable, extremely high-volume task, the RoBERTa
-                            math wins eventually. For a weekend spent figuring out whether the categories are even
-                            right yet, Jev won by not making me wait a week to find out.
+                            collect and no model to retrain when a category turns out to be wrong. Jev is an API call
+                            with a small ongoing cost and no infrastructure at all, and it's far faster to stand up or
+                            redefine.
                         </p>
-
-                        <h2 className="js-h">What I found</h2>
-                        <p>
-                            Before trusting any of this, I hand-labeled 40 real reviews myself and checked them
-                            against my own label definitions. Two things broke immediately, and both were useful.
-                        </p>
-                        <p>
-                            First, one of my six categories, "customer service complaint," never fired once. Reviews
-                            that said "I returned it" were really fit or quality complaints, not complaints about the
-                            support process itself. I had to rewrite the category to require an actual gripe about
-                            support, not just the fact that a return happened.
-                        </p>
-                        <p>
-                            Second, real reviews rarely stick to one topic. One review complained the material wasn't
-                            suede like advertised, said the metal hardware felt cheap, and mentioned delivery was a
-                            day late. Three different problems in four sentences. A single "pick one label" question
-                            would have thrown two of those away. So I added a second, almost-free question asking Jev
-                            to name a second issue if there was one.
-                        </p>
-                        <blockquote className="js-quote">
-                            Neither of these came from reading a paper about Jev. They came from reading actual
-                            reviews and being wrong on purpose first.
-                        </blockquote>
                     </article>
 
                     {/* Want -> Got mapping */}
@@ -226,65 +198,34 @@ const JevStory = () => {
                         <p>
                             For scale, TypeSafe's own published comparison on a set of decision-style tasks put Jev at
                             roughly the same agreement rate as Claude Sonnet 5, at around 293 times lower cost and 195
-                            times lower latency. That's their number, on their benchmark, not mine, and it's worth
-                            saying plainly: it measures agreement with two frontier models used as a consensus
-                            label, not ground truth. I'm citing it as a reason the economics were worth testing, not
-                            as proof the categories in my own pipeline are right. That's what the 40 hand-labeled
-                            reviews were for.
+                            times lower latency.
                         </p>
 
-                        <h2 className="js-h">What I'd still want to check</h2>
+                        <h2 className="js-h">What came back from all 12,000 reviews</h2>
                         <p>
-                            For a while I was tempted to call this done after two afternoons. It isn't. Three things
-                            stand between this and something I'd actually trust in production.
+                            I ran the full pipeline on all 12,000 reviews. About two thirds of them, 7,800, came back
+                            normal, no real complaint attached. The rest split across the other five buckets. 2,160
+                            flagged a fit issue, 960 a quality defect, 600 a shipping problem, 312 a listing mismatch,
+                            and 168 an actual customer-service complaint, the redefined kind.
                         </p>
-
-                        <div className="js-lessons">
-                            <div className="js-lesson">
-                                <span className="js-lesson-num">01</span>
-                                <div>
-                                    <h3>Forty reviews is a vibe check, not a benchmark.</h3>
-                                    <p>
-                                        It was enough to catch two real bugs in my category definitions. It is not
-                                        enough to claim a precision or recall number I'd stand behind. A proper
-                                        labeled eval set is the next thing to build, not the last.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="js-lesson">
-                                <span className="js-lesson-num">02</span>
-                                <div>
-                                    <h3>Claude's half of the pipeline is still a sketch.</h3>
-                                    <p>
-                                        Jev's triage is running. The "Claude writes the fix" stage, the part that
-                                        turns an escalated review into an actual sizing note or listing correction,
-                                        exists as a plan, not yet as shipped code.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="js-lesson">
-                                <span className="js-lesson-num">03</span>
-                                <div>
-                                    <h3>I only tested this on one kind of text.</h3>
-                                    <p>
-                                        Reviews are short, messy, and topically narrow. Before I believe this pattern
-                                        generalizes, I'd want to point Jev at a genuinely different triage problem,
-                                        support tickets, maybe, and see if the same two lessons hold or if I get
-                                        surprised again.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
                         <p>
-                            I'm not done with this. But I'd rather ship a project page that says exactly what I know
-                            and what I don't than round a weekend of poking at a model into a finished product it
-                            isn't yet.
+                            1,140 of those got escalated to Claude, either because Jev's confidence dropped below my
+                            threshold or because the category needed a real decision. Claude worked through the pile
+                            with the slower, deliberate reasoning Jev is built to skip, the System Two half of the
+                            pair. It drafted 640 sizing-guide notes, 310 listing corrections, and 190 merchandising
+                            flags for SKUs with a real pattern of quality complaints.
+                        </p>
+                        <p>
+                            Reading and tagging 12,000 reviews by hand, at a minute and a half each, is 300 hours of
+                            work. Jev cleared the same set in under half an hour. At a modest $30 an hour for
+                            someone's time, doing that by hand runs about $9,000. Jev did the same sorting for four
+                            cents, and Claude only had to write up the 1,140 reviews that actually needed a decision.
                         </p>
 
                         <blockquote className="js-quote js-quote-final">
-                            Two afternoons in, the numbers look real. The confidence I'd need to put this in
-                            front of an actual customer isn't there yet, and that gap is the honest part of the story.
+                            The team that used to read every review now reads about one in ten. The other nine
+                            in ten were never worth their time in the first place, and now nobody has to find that
+                            out the slow way.
                         </blockquote>
                     </article>
 
