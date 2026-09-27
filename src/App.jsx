@@ -20,6 +20,7 @@ import Contact from './pages/Contact';
 import Payments from './pages/Payments';
 import Faherty from './pages/Faherty';
 import FifaStory from './pages/FifaStory';
+import JevStory from './pages/JevStory';
 
 function App() {
   const location = useLocation();
@@ -73,6 +74,7 @@ function App() {
             <Route path="/payments" element={<Payments />} />
             <Route path="/faherty" element={<Faherty />} />
             <Route path="/fifa-prediction-pool" element={<FifaStory />} />
+            <Route path="/meeting-jev" element={<JevStory />} />
           </Routes>
         </AnimatePresence>
       </main>

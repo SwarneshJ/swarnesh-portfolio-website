@@ -1,0 +1,52 @@
+<svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="jevCascadeTitle jevCascadeDesc">
+  <title id="jevCascadeTitle">Two-stage review triage cascade</title>
+  <desc id="jevCascadeDesc">12,000 reviews are classified by Jev. Routine cases go to a dashboard. Cases that need a human decision are escalated to Claude, which writes the fix.</desc>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#8D93A0" />
+    </marker>
+  </defs>
+
+  <rect width="1200" height="675" fill="#FCFAF4" />
+
+  <text x="80" y="108" font-family="Outfit, sans-serif" font-size="15" font-weight="700" letter-spacing="3" fill="#6E7582">REVIEW TRIAGE CASCADE</text>
+  <text x="80" y="150" font-family="Fraunces, Georgia, serif" font-size="34" font-weight="600" fill="#232933">Two stages. One decision.</text>
+
+  <!-- connectors -->
+  <g fill="none" stroke="#8D93A0" stroke-width="2">
+    <path d="M254 330H366" marker-end="url(#arrow)" />
+    <path d="M494 330H592" marker-end="url(#arrow)" />
+    <path d="M712 330H802" marker-end="url(#arrow)" />
+    <path d="M672 370V470" marker-end="url(#arrow)" />
+  </g>
+  <text x="740" y="316" font-family="Inter, sans-serif" font-size="14" fill="#6E7582">routine</text>
+  <text x="690" y="424" font-family="Inter, sans-serif" font-size="14" fill="#6E7582">needs a call</text>
+
+  <!-- step 1: input -->
+  <rect x="80" y="290" width="174" height="80" rx="10" fill="#FCFAF4" stroke="#2A313C" stroke-opacity="0.22" stroke-width="1.5" />
+  <text x="167" y="323" text-anchor="middle" font-family="Outfit, sans-serif" font-size="15" font-weight="600" fill="#232933">12,000</text>
+  <text x="167" y="345" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#6E7582">e-commerce reviews</text>
+
+  <!-- step 2: jev -->
+  <rect x="366" y="284" width="128" height="92" rx="10" fill="#FCFAF4" stroke="#3572AE" stroke-width="2" />
+  <text x="430" y="323" text-anchor="middle" font-family="Outfit, sans-serif" font-size="16" font-weight="700" fill="#3572AE">Jev</text>
+  <text x="430" y="345" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" fill="#454C59">classifies + scores</text>
+
+  <!-- decision diamond -->
+  <polygon points="672,270 742,330 672,390 602,330" fill="#FCFAF4" stroke="#2A313C" stroke-opacity="0.22" stroke-width="1.5" />
+  <text x="672" y="326" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" fill="#232933">routine</text>
+  <text x="672" y="341" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" fill="#232933">case?</text>
+
+  <!-- step 3: dashboard -->
+  <rect x="802" y="290" width="150" height="80" rx="10" fill="#FCFAF4" stroke="#2A313C" stroke-opacity="0.22" stroke-width="1.5" />
+  <text x="877" y="335" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#454C59">logged to</text>
+  <text x="877" y="352" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#454C59">dashboard</text>
+
+  <!-- step 4: claude writes the fix -->
+  <rect x="537" y="470" width="270" height="88" rx="10" fill="#FBF1E4" stroke="#C98A3D" stroke-width="2" />
+  <text x="672" y="508" text-anchor="middle" font-family="Outfit, sans-serif" font-size="15.5" font-weight="700" fill="#232933">Claude writes the fix</text>
+  <text x="672" y="530" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" fill="#6E7582">sizing note · listing edit · flag</text>
+
+  <text x="80" y="600" font-family="Inter, sans-serif" font-style="italic" font-size="14.5" fill="#6E7582">Jev never writes a sentence. Claude only writes when a human would have had to.</text>
+</svg>

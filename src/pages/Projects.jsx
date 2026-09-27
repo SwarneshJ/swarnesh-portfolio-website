@@ -25,6 +25,17 @@ const projectsData = [
         memoSlides: Array.from({ length: 14 }, (_, i) => `/assets/memo/Slide${i + 1}.jpeg`)
     },
     {
+        id: 'meeting-jev',
+        flagship: false,
+        title: 'Meeting Jev: A Faster Review Triage Cascade',
+        tags: ['Jev', 'System One AI', 'Claude', 'Python'],
+        summary: 'A weekend spent testing Jev, a "System One" model that skips text generation entirely and answers every question with a number. I built a two-stage pipeline where Jev triages 12,000 e-commerce reviews into six categories and Claude only writes fixes for the ones that actually need a human call. Hand-labeling 40 reviews to check my own categories broke two of my assumptions before I\'d shipped a single "real" line.',
+        metrics: ['~$0.04 to Triage 12K Reviews', 'Zero Labeled Training Data (vs. 15K for RoBERTa)'],
+        image: '/assets/jev-cascade.svg',
+        caseStudy: '/meeting-jev',
+        links: { github: 'https://github.com/SwarneshJ/Jev-Customer-Review-Classifier', live: null }
+    },
+    {
         id: 'perfect-form',
         flagship: true,
         title: 'PerfectFormAI (Startup VC Pitch)',

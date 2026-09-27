@@ -1,0 +1,272 @@
+/* ===== Meeting Jev - Product Story ===== */
+
+.jev-story {
+    position: relative;
+    overflow: hidden;
+}
+
+.js-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    transition: color var(--transition-fast);
+}
+
+.js-back:hover {
+    color: var(--accent-blue);
+}
+
+.js-title {
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    margin: 1rem 0 1.25rem;
+    max-width: 14ch;
+}
+
+.js-subtitle {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    max-width: 62ch;
+    line-height: 1.7;
+}
+
+.js-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.js-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.js-pill {
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding: 0.35rem 0.85rem;
+    border-radius: 30px;
+    color: var(--text-muted);
+    border: 1px solid var(--border-light);
+    background: var(--fill-softer);
+}
+
+/* Hero image */
+.js-hero-img {
+    margin-top: 3.5rem;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 24px 60px rgba(58, 48, 30, 0.2);
+    background: var(--bg-secondary);
+}
+
+.js-hero-img img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* ===== Narrative ===== */
+.js-article {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.js-article p {
+    color: var(--text-body);
+    font-size: 1.12rem;
+    line-height: 1.85;
+    margin-bottom: 1.4rem;
+}
+
+.js-inline-link {
+    color: var(--accent-blue);
+    text-decoration: underline;
+    text-decoration-color: var(--border-glow);
+    text-underline-offset: 3px;
+    transition: color var(--transition-fast);
+}
+
+.js-inline-link:hover {
+    color: var(--amber);
+}
+
+.js-h {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin: 3rem 0 1.4rem;
+    line-height: 1.2;
+}
+
+.js-h::before {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--amber), var(--accent-blue));
+    margin-bottom: 1.1rem;
+}
+
+/* Pull quotes */
+.js-quote {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+    line-height: 1.45;
+    color: var(--text-main);
+    border-left: 3px solid var(--accent-blue);
+    padding: 0.4rem 0 0.4rem 1.5rem;
+    margin: 2.5rem 0;
+}
+
+.js-quote-final {
+    border-left-color: var(--amber);
+    background: linear-gradient(90deg, rgba(201, 138, 61, 0.09), transparent);
+    padding: 1.5rem 0 1.5rem 1.5rem;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+/* ===== In-article diagram ===== */
+.js-diagram {
+    max-width: 900px;
+    margin: 3rem auto;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+    background: var(--bg-secondary);
+    box-shadow: var(--card-edge);
+}
+
+.js-diagram img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.js-diagram-caption {
+    text-align: center;
+    padding: 0.9rem 1rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-light);
+    letter-spacing: 0.02em;
+}
+
+/* ===== Want -> Got mapping grid ===== */
+.js-map {
+    max-width: 900px;
+    margin: 3rem auto 3.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+}
+
+.js-map-card {
+    padding: 1.6rem !important;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.js-map-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-blue);
+    background: rgba(53, 114, 174, 0.12);
+    margin-bottom: 0.4rem;
+}
+
+.js-map-want {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    line-height: 1.5;
+    font-style: italic;
+}
+
+.js-map-arrow {
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+}
+
+.js-map-got {
+    color: var(--text-main);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.55;
+}
+
+/* ===== Lessons ===== */
+.js-lessons {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 2rem 0 2.5rem;
+}
+
+.js-lesson {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+}
+
+.js-lesson-num {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.6rem;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--accent-blue);
+    flex-shrink: 0;
+    padding-top: 0.2rem;
+}
+
+.js-lesson h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.js-lesson p {
+    margin-bottom: 0 !important;
+    font-size: 1.05rem !important;
+}
+
+/* ===== Bottom CTA ===== */
+.js-bottom-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 4rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 860px) {
+    .js-map {
+        grid-template-columns: 1fr;
+        max-width: 640px;
+    }
+}
+
+@media (max-width: 600px) {
+    .js-article p {
+        font-size: 1.05rem;
+    }
+}
