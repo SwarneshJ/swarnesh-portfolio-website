@@ -134,7 +134,20 @@ const JevStory = () => {
                             models try to imitate. Instead of generating text, Jev answers a direct question with a
                             number. That might be a probability, a chosen label, or a score on a scale.
                         </p>
+                    </article>
 
+                    <motion.div
+                        className="js-diagram js-video"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: '-60px' }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        <video src="/assets/jev-demo-2.mp4" poster="/assets/jev-demo-2-poster.jpg" controls playsInline preload="metadata" />
+                        <p className="js-diagram-caption">Jev in action</p>
+                    </motion.div>
+
+                    <article className="js-article">
                         <h2 className="js-h">What Jev actually is</h2>
                         <p>
                             Most AI headlines right now are about models that write, chat, or generate images. Jev
@@ -283,17 +296,6 @@ const JevStory = () => {
                             cents, and Claude only had to write up the 1,140 reviews that actually needed a decision.
                         </p>
                     </article>
-
-                    <motion.div
-                        className="js-diagram js-video"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: '-60px' }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        <video src="/assets/jev-demo-2.mp4" poster="/assets/jev-demo-2-poster.jpg" controls playsInline preload="metadata" />
-                        <p className="js-diagram-caption">the pipeline running on real reviews</p>
-                    </motion.div>
 
                     <div className="js-bottom-cta">
                         <Magnetic>
