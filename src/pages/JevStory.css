@@ -219,6 +219,12 @@
     height: auto;
 }
 
+.js-diagram video {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
 .js-diagram-caption {
     text-align: center;
     padding: 0.9rem 1rem;

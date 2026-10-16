@@ -284,6 +284,17 @@ const JevStory = () => {
                         </p>
                     </article>
 
+                    <motion.div
+                        className="js-diagram js-video"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: '-60px' }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        <video src="/assets/jev-demo-2.mp4" poster="/assets/jev-demo-2-poster.jpg" controls playsInline preload="metadata" />
+                        <p className="js-diagram-caption">the pipeline running on real reviews</p>
+                    </motion.div>
+
                     <div className="js-bottom-cta">
                         <Magnetic>
                             <a href="https://github.com/SwarneshJ/Jev-Customer-Review-Classifier" target="_blank" rel="noreferrer" className="btn btn-primary">
