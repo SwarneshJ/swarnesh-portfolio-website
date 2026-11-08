@@ -1,0 +1,38 @@
+.mt-wrap { max-width: 1000px; }
+.mt-title { margin: 1rem 0 0.75rem; text-align: left; }
+.mt-title::after { margin-left: 0; }
+.mt-sub { max-width: 60ch; margin-bottom: 2rem; }
+.mt-note, .mt-empty { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+.mt-note { font-style: italic; }
+
+.mt-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.25rem; }
+.mt-stat { padding: 1.4rem 1.5rem !important; display: flex; flex-direction: column; gap: 0.35rem; }
+.mt-stat-val { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.05; color: var(--text-main); }
+.mt-stat-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+
+.mt-card { padding: 1.6rem 1.85rem !important; }
+.mt-card-title { font-family: var(--font-heading); font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 1.2rem; }
+.mt-daily { margin-bottom: 1.25rem; }
+
+.mt-bars { display: flex; align-items: flex-end; gap: 4px; height: 150px; }
+.mt-col { flex: 1; height: 100%; display: flex; align-items: flex-end; }
+.mt-col-bar { width: 100%; min-height: 2px; border-radius: 4px 4px 0 0; background: linear-gradient(180deg, var(--accent-blue), rgba(53, 114, 174, 0.45)); }
+.mt-axis { display: flex; justify-content: space-between; margin-top: 0.6rem; font-size: 0.75rem; color: var(--text-muted); }
+
+.mt-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+.mt-rank { margin-bottom: 0.9rem; }
+.mt-rank:last-child { margin-bottom: 0; }
+.mt-rank-head { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.88rem; margin-bottom: 0.35rem; }
+.mt-rank-label { color: var(--text-body); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mt-rank-val { font-family: var(--font-heading); font-weight: 700; color: var(--text-main); white-space: nowrap; }
+.mt-rank-val em { font-style: normal; font-weight: 500; color: var(--text-muted); margin-left: 0.3rem; }
+.mt-track { height: 8px; border-radius: 6px; background: var(--fill-softer); overflow: hidden; }
+.mt-bar { height: 100%; border-radius: 6px; }
+
+.mt-foot { margin-top: 2rem; font-size: 0.85rem; color: var(--text-muted); }
+.mt-link { background: none; border: 0; padding: 0; font: inherit; color: var(--accent-blue); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+@media (max-width: 860px) {
+    .mt-stats { grid-template-columns: repeat(2, 1fr); }
+    .mt-grid { grid-template-columns: 1fr; }
+}
